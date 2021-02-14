@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.eventFilter
+=========================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.eventFilter

@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.mousePressEvent
+=============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.mousePressEvent

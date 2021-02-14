@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.get\_all\_widget
+==============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.get_all_widget

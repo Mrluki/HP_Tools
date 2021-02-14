@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>HTransparentDialogOnViewport.install_filter_on_all_window &mdash; Hugo Potin tool 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTransparentDialogOnViewport.mask" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mask.html" />
+    <link rel="prev" title="HTransparentDialogOnViewport.get_window_rect" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/h_tool_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to use:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Sculpt-anim.html">Sculpt Anim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Maya</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html#qt">Qt</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="source.Qt.custom_widget.html">custom_widget</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HButton.html">HButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HIconLabel.html">HIconLabel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HQSlider.html">HQSlider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.html">HTransparentDialogOnViewport</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections.html">HTransparentDialogOnViewport.create_connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_context_menu.html">HTransparentDialogOnViewport.create_context_menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_layout.html">HTransparentDialogOnViewport.create_layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_widgets.html">HTransparentDialogOnViewport.create_widgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.eventFilter.html">HTransparentDialogOnViewport.eventFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_widget.html">HTransparentDialogOnViewport.get_all_widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_window.html">HTransparentDialogOnViewport.get_all_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_pos_from_viewport.html">HTransparentDialogOnViewport.get_window_pos_from_viewport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect.html">HTransparentDialogOnViewport.get_window_rect</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">HTransparentDialogOnViewport.install_filter_on_all_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mask.html">HTransparentDialogOnViewport.mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.maximize.html">HTransparentDialogOnViewport.maximize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.minimize.html">HTransparentDialogOnViewport.minimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseDoubleClickEvent.html">HTransparentDialogOnViewport.mouseDoubleClickEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseMoveEvent.html">HTransparentDialogOnViewport.mouseMoveEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mousePressEvent.html">HTransparentDialogOnViewport.mousePressEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseReleaseEvent.html">HTransparentDialogOnViewport.mouseReleaseEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.move_widget_with_viewport.html">HTransparentDialogOnViewport.move_widget_with_viewport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.paintEvent.html">HTransparentDialogOnViewport.paintEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.ui_quit.html">HTransparentDialogOnViewport.ui_quit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.visibility.html">HTransparentDialogOnViewport.visibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.get_viewport.html">get_viewport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.maya_main_window.html">maya_main_window</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hugo Potin tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../modules.html">Maya</a> &raquo;</li>
+        
+          <li><a href="source.Qt.custom_widget.html">custom_widget</a> &raquo;</li>
+        
+          <li><a href="source.Qt.custom_widget.HTransparentDialogOnViewport.html">HTransparentDialogOnViewport</a> &raquo;</li>
+        
+      <li>HTransparentDialogOnViewport.install_filter_on_all_window</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/generated/source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="htransparentdialogonviewport-install-filter-on-all-window">
+<h1>HTransparentDialogOnViewport.install_filter_on_all_window<a class="headerlink" href="#htransparentdialogonviewport-install-filter-on-all-window" title="Permalink to this headline">¶</a></h1>
+<dl class="py method">
+<dt id="source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window">
+<code class="sig-prename descclassname">HTransparentDialogOnViewport.</code><code class="sig-name descname">install_filter_on_all_window</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">windows</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install event filter on all given window</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>windows</strong> (<em>list</em>) – Windows on which you want to install the event
+filter</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="source.Qt.custom_widget.HTransparentDialogOnViewport.mask.html" class="btn btn-neutral float-right" title="HTransparentDialogOnViewport.mask" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect.html" class="btn btn-neutral float-left" title="HTransparentDialogOnViewport.get_window_rect" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Hugo potin. Theme based on Godot dark theme.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

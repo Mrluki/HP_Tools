@@ -1,0 +1,6 @@
+SculptAnimLogic.cntx\_click\_on\_mesh
+=====================================
+
+.. currentmodule:: source.Sculpt_anim.logic
+
+.. autoattribute:: SculptAnimLogic.cntx_click_on_mesh

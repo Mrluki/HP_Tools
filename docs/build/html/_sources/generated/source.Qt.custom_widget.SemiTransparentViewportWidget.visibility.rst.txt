@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.visibility
+========================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.visibility

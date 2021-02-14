@@ -1,0 +1,6 @@
+HTransparentDialogOnViewport.maya\_main\_window
+===============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: HTransparentDialogOnViewport.maya_main_window

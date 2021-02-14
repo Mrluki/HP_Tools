@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.create\_context\_menu
+===================================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.create_context_menu

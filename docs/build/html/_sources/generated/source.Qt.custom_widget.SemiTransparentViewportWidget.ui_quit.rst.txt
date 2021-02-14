@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.ui\_quit
+======================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.ui_quit

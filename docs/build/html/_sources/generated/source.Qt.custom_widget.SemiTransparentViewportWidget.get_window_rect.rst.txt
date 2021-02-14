@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.get\_window\_rect
+===============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.get_window_rect

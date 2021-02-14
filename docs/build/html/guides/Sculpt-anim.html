@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta content="How to use anim sculpt tool It will create  and handle multiple blend shape on the same mesh" lang="en" name="description" xml:lang="en" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Sculpt Anim &mdash; Hugo Potin tool 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maya" href="../modules.html" />
+    <link rel="prev" title="Installation" href="../installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/h_tool_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to use:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sculpt Anim</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#launch-in-maya">Launch in maya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interface">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialize-tool">Initialize tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-mesh">Edit Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tweener">Tweener</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#qt">Qt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hugo Potin tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sculpt Anim</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/guides/Sculpt-anim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sculpt-anim">
+<h1>Sculpt Anim<a class="headerlink" href="#sculpt-anim" title="Permalink to this headline">¶</a></h1>
+<p>This tool allow you to sculpt any skinned mesh on one or multiple frame.</p>
+<div class="section" id="launch-in-maya">
+<span id="sculpt-anim-launch-in-maya"></span><h2>Launch in maya<a class="headerlink" href="#launch-in-maya" title="Permalink to this headline">¶</a></h2>
+<p>If you have created a shelf when installing the tools you just have to press this icon</p>
+<img alt="../_images/anim_sculpt.png" src="../_images/anim_sculpt.png" />
+<p>If not you can run this code in Maya script editor</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Sculpt_anim.ui</span> <span class="kn">as</span> <span class="nn">sculpt_anim</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">UI</span><span class="o">.</span><span class="n">main_ui</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+    <span class="n">UI</span><span class="o">.</span><span class="n">main_ui_quit</span><span class="p">()</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+<span class="n">sculpt_anim_UI</span> <span class="o">=</span> <span class="n">sculpt_anim</span><span class="o">.</span><span class="n">SculptAnimUI</span><span class="p">()</span>
+<span class="n">sculpt_anim_UI</span><span class="o">.</span><span class="n">main_ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interface">
+<span id="sculpt-anim-interface"></span><h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/interface.png" src="../_images/interface.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If no mesh were selected most of the interface will be disable
+please use the select mesh button (cf 2.) to enable them</p>
+</div>
+<ol class="arabic">
+<li><dl class="simple">
+<dt><strong>Current mesh</strong></dt><dd><p>This box will display the current mesh selected. It’s on this mesh that the
+edit will be performed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Select mesh</strong></dt><dd><p>This button will be use to change the current mesh based on what you have selected
+when pressing it.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Key</strong></dt><dd><div class="line-block">
+<div class="line">If you press this button it will create a new target on the current frame.</div>
+<div class="line">It’ll also light in <code class="docutils literal notranslate"><span class="pre">red</span></code> if there’s already a key on the current frame.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Reset mesh</strong></dt><dd><p>This button will reset the mesh to it’s default state.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Tweener</strong></dt><dd><div class="line-block">
+<div class="line">The handle will move accordingly to your positioning between two targets</div>
+<div class="line">You can move the handle to be more close from the previous or next target</div>
+<div class="line">Releasing the handle will set a new key</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic" start="5">
+<li><dl>
+<dt><strong>Edit mode</strong></dt><dd><div class="line-block">
+<div class="line">This will enable the edit mode, you have to activate it in order to edit the mesh</div>
+<div class="line">It will light in <code class="docutils literal notranslate"><span class="pre">yellow</span></code> when you are in edit mode</div>
+<div class="line">If there is no key when you toggle the edit mode a key will be set</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><dl class="simple">
+<dt><strong>Delete Target</strong></dt><dd><p>This will delete the current target
+you can right click the button to delete all target</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Help</strong></dt><dd><p>Open the documentation inside maya and press the select mesh button</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initialize-tool">
+<h3>Initialize tool<a class="headerlink" href="#initialize-tool" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Load the tool in maya</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#sculpt-anim-launch-in-maya"><span class="std std-ref">Launch in maya</span></a></p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Select the mesh you want to edit and press the <a class="reference internal" href="#sculpt-anim-interface"><span class="std std-ref">select mesh</span></a> button,</dt><dd><p>this will enable all the tools</p>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/select_mesh.gif" src="../_images/select_mesh.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">It is not currently possible to edit multiple meshes at the same time.</div>
+<div class="line">If you have multiple meshes selected when pressing the button the first one will be set as Current mesh. (<a class="reference internal" href="#sculpt-anim-interface"><span class="std std-ref">cf 1.</span></a>)</div>
+</div>
+</div>
+</div>
+<div class="section" id="edit-mesh">
+<h3>Edit Mesh<a class="headerlink" href="#edit-mesh" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Go to a frame where you want to edit your mesh and press the <a class="reference internal" href="#sculpt-anim-interface"><span class="std std-ref">edit mode</span></a> button
+This will allow you to start sculpting your mesh</p></li>
+</ul>
+<img alt="../_images/edit_mesh.gif" src="../_images/edit_mesh.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Once your done editing this frame moving in the timeline will automatically bake the target</p></li>
+</ul>
+<img alt="../_images/leave_edit_mesh.gif" src="../_images/leave_edit_mesh.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to leave the edit mode without changing the current frame you can also press the <a class="reference internal" href="#sculpt-anim-interface"><span class="std std-ref">edit mode</span></a> button again</p>
+</div>
+<ul class="simple">
+<li><p>You can edit the mesh with all the classic mesh edit maya tool. This tool also come with his own marking menu
+that you can summon 👻 by pressing the mouse middle click button</p></li>
+</ul>
+<img alt="../_images/brush_wheel.gif" src="../_images/brush_wheel.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>At any moment you can reset the mesh to it’s default deformation by using the <a class="reference internal" href="#sculpt-anim-interface"><span class="std std-ref">reset</span></a> button</p></li>
+</ul>
+<img alt="../_images/reset.gif" src="../_images/reset.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will only reset the deformation performed by the sculpt anim tool</p>
+</div>
+</div>
+<div class="section" id="tweener">
+<h3>Tweener<a class="headerlink" href="#tweener" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line">You can use the tweener between two frames it will favor on or the other.</div>
+<div class="line">Releasing the handle will set a key</div>
+</div>
+</li>
+</ul>
+<img alt="../_images/tweener.gif" src="../_images/tweener.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">Using the tweener on a frame with an existing target on it will delete the target. <code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">action</span> <span class="pre">in</span> <span class="pre">undoable</span></code></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../modules.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Hugo potin. Theme based on Godot dark theme.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

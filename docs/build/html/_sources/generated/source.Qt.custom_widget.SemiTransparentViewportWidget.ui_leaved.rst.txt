@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.ui\_leaved
+========================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. autoattribute:: SemiTransparentViewportWidget.ui_leaved

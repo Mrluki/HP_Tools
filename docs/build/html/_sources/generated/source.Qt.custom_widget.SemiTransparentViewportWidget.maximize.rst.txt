@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.maximize
+======================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.maximize

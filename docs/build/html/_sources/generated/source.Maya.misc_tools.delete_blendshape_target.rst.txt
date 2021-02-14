@@ -1,0 +1,6 @@
+delete\_blendshape\_target
+==========================
+
+.. currentmodule:: source.Maya.misc_tools
+
+.. autofunction:: delete_blendshape_target

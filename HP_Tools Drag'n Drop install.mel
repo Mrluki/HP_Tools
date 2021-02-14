@@ -1,0 +1,26 @@
+{
+  string $fileDir = `installScriptLocation`;
+  python ("\n\
+import sys\n\
+import os\n\
+path = '"+$fileDir+"source'\n\
+sys.path.append(path)\n\
+import installer\n\
+reload (installer)\n\
+installer.user_setup()\n\
+installer_UI = installer.InstallUI()\n\
+installer_UI.main_ui.show()\n\
+");
+
+  global proc string installScriptLocation () {
+      string $whatIs=`whatIs installScriptLocation`;
+      // $whatIs "Mel procedure found in: C:/Users/...."
+      string $fullPath=`substring $whatIs 25 999`;
+      string $buffer[];
+      int $numTok=`tokenize $fullPath "/" $buffer`;
+      int $numLetters=size($fullPath);
+      int $numLettersLastFolder=size($buffer[$numTok-1]);
+      string $scriptLocation=`substring $fullPath 1 ($numLetters-$numLettersLastFolder)`;
+      return $scriptLocation;
+  }
+}

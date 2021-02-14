@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.maya\_main\_window
+================================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.maya_main_window

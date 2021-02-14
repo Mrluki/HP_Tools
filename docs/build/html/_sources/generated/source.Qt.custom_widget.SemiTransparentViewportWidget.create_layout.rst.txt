@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.create\_layout
+============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.create_layout

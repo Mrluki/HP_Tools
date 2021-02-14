@@ -1,0 +1,50 @@
+SemiTransparentViewportWidget
+=============================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. autoclass:: SemiTransparentViewportWidget
+
+   
+   
+   
+      .. rubric:: Attributes
+   
+      .. autosummary::
+         :toctree:
+      
+         SemiTransparentViewportWidget.ui_leaved
+   
+   
+
+   
+      .. rubric:: Functions
+
+      .. autosummary::
+         :toctree:
+         
+                  SemiTransparentViewportWidget.create_connections
+                  SemiTransparentViewportWidget.create_context_menu
+                  SemiTransparentViewportWidget.create_layout
+                  SemiTransparentViewportWidget.create_widgets
+                  SemiTransparentViewportWidget.eventFilter
+                  SemiTransparentViewportWidget.get_all_widget
+                  SemiTransparentViewportWidget.get_all_window
+                  SemiTransparentViewportWidget.get_viewport
+                  SemiTransparentViewportWidget.get_window_pos_from_viewport
+                  SemiTransparentViewportWidget.get_window_rect
+                  SemiTransparentViewportWidget.install_filter_on_all_window
+                  SemiTransparentViewportWidget.mask
+                  SemiTransparentViewportWidget.maximize
+                  SemiTransparentViewportWidget.maya_main_window
+                  SemiTransparentViewportWidget.minimize
+                  SemiTransparentViewportWidget.mouseDoubleClickEvent
+                  SemiTransparentViewportWidget.mouseMoveEvent
+                  SemiTransparentViewportWidget.mousePressEvent
+                  SemiTransparentViewportWidget.mouseReleaseEvent
+                  SemiTransparentViewportWidget.move_widget_with_viewport
+                  SemiTransparentViewportWidget.paintEvent
+                  SemiTransparentViewportWidget.ui_quit
+                  SemiTransparentViewportWidget.visibility
+   
+   

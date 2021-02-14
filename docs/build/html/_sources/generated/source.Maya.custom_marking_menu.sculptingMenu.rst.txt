@@ -1,0 +1,23 @@
+sculptingMenu
+=============
+
+.. currentmodule:: source.Maya.custom_marking_menu
+
+.. autoclass:: sculptingMenu
+
+   
+   
+   
+   
+
+   
+      .. rubric:: Functions
+
+      .. autosummary::
+         :toctree:
+         
+                  sculptingMenu.build
+                  sculptingMenu.buildMarkingMenu
+                  sculptingMenu.removeOld
+   
+   

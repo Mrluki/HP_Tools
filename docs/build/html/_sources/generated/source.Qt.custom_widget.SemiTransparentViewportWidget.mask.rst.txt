@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.mask
+==================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.mask

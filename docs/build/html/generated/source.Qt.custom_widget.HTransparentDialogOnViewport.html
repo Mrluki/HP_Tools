@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>HTransparentDialogOnViewport &mdash; Hugo Potin tool 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTransparentDialogOnViewport.create_connections" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections.html" />
+    <link rel="prev" title="HQSlider" href="source.Qt.custom_widget.HQSlider.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/h_tool_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to use:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Sculpt-anim.html">Sculpt Anim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Maya</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html#qt">Qt</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="source.Qt.custom_widget.html">custom_widget</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HButton.html">HButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HIconLabel.html">HIconLabel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.HQSlider.html">HQSlider</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">HTransparentDialogOnViewport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections.html">HTransparentDialogOnViewport.create_connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_context_menu.html">HTransparentDialogOnViewport.create_context_menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_layout.html">HTransparentDialogOnViewport.create_layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_widgets.html">HTransparentDialogOnViewport.create_widgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.eventFilter.html">HTransparentDialogOnViewport.eventFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_widget.html">HTransparentDialogOnViewport.get_all_widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_window.html">HTransparentDialogOnViewport.get_all_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_pos_from_viewport.html">HTransparentDialogOnViewport.get_window_pos_from_viewport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect.html">HTransparentDialogOnViewport.get_window_rect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window.html">HTransparentDialogOnViewport.install_filter_on_all_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mask.html">HTransparentDialogOnViewport.mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.maximize.html">HTransparentDialogOnViewport.maximize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.minimize.html">HTransparentDialogOnViewport.minimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseDoubleClickEvent.html">HTransparentDialogOnViewport.mouseDoubleClickEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseMoveEvent.html">HTransparentDialogOnViewport.mouseMoveEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mousePressEvent.html">HTransparentDialogOnViewport.mousePressEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseReleaseEvent.html">HTransparentDialogOnViewport.mouseReleaseEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.move_widget_with_viewport.html">HTransparentDialogOnViewport.move_widget_with_viewport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.paintEvent.html">HTransparentDialogOnViewport.paintEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.ui_quit.html">HTransparentDialogOnViewport.ui_quit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.visibility.html">HTransparentDialogOnViewport.visibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.get_viewport.html">get_viewport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Qt.custom_widget.maya_main_window.html">maya_main_window</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hugo Potin tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../modules.html">Maya</a> &raquo;</li>
+        
+          <li><a href="source.Qt.custom_widget.html">custom_widget</a> &raquo;</li>
+        
+      <li>HTransparentDialogOnViewport</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/generated/source.Qt.custom_widget.HTransparentDialogOnViewport.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="htransparentdialogonviewport">
+<h1>HTransparentDialogOnViewport<a class="headerlink" href="#htransparentdialogonviewport" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="source.Qt.custom_widget.HTransparentDialogOnViewport">
+<em class="property">class </em><code class="sig-prename descclassname">source.Qt.custom_widget.</code><code class="sig-name descname">HTransparentDialogOnViewport</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.Qt.custom_widget.HTransparentDialogOnViewport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Custom Qwidget that will follow the maya Viewport while allowing
+transparency/semiTransparency</p>
+<img alt="../_images/HTransparentDialogOnViewport.gif" class="align-center" src="../_images/HTransparentDialogOnViewport.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Allow to minimize the window to different side (top left, top right, bottom left, bottom right)</p></li>
+<li><p>hide on maya prompt</p></li>
+<li><p>Improve UI positioning when rescaling maya,something like ui pos * (viewport size full screen/viewport size current)</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_name</strong> (<em>str</em>) – Name of the window that’ll be created</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="#source.Qt.custom_widget.HTransparentDialogOnViewport" title="source.Qt.custom_widget.HTransparentDialogOnViewport"><em>HTransparentDialogOnViewport</em></a>) – Parent the window to an other
+HTransparentDialogOnViewport, <code class="docutils literal notranslate"><span class="pre">optional</span></code></p></li>
+<li><p><strong>pos</strong> (<em>list</em>) – Position where the windows will appear base on the maya
+viewport, <code class="docutils literal notranslate"><span class="pre">defaults</span> <span class="pre">[0,0]</span></code></p></li>
+<li><p><strong>size</strong> (<em>list</em>) – Default size of the created window , <code class="docutils literal notranslate"><span class="pre">defaults</span> <span class="pre">[50,50]</span></code></p></li>
+<li><p><strong>visible</strong> (<em>bool</em>) – If the windows should be visible when created or not,
+<code class="docutils literal notranslate"><span class="pre">defaults</span> <span class="pre">False</span></code></p></li>
+<li><p><strong>orientation</strong> (<em>str</em>) – Define the layout orientation onf the window,
+<code class="docutils literal notranslate"><span class="pre">defaults</span> <span class="pre">horizontal</span></code></p></li>
+<li><p><strong>opacity</strong> (<em>float</em>) – Define the opacity of the window, <code class="docutils literal notranslate"><span class="pre">defaults</span> <span class="pre">0.5</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> need to be a HTransparentDialogOnViewport for it to work</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">orientation</span></code> only accept ‘horizontal’ or ‘vertical’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opacity</span></code> value should be contain between 0.0 and 1.0</p></li>
+</ul>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">HP_Tools.Qt.custom_widget</span> <span class="k">as</span> <span class="nn">cstm_widget</span>
+
+<span class="n">TOOL_ICON</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QIcon</span><span class="p">(</span><span class="s2">&quot;:/images/my_tool_icon.png&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyCustomUI</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QObject</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">MyCustomUI</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+            <span class="c1"># ui creation</span>
+            <span class="n">main_ui</span> <span class="o">=</span> <span class="n">cstm_widget</span><span class="o">.</span><span class="n">HTransparentDialogOnViewport</span><span class="p">(</span><span class="s1">&#39;anim sculpt&#39;</span><span class="p">,</span>
+                                                                <span class="n">pos</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+                                                                <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+                                                                <span class="n">tool_icon</span><span class="o">=</span><span class="n">TOOL_ICON</span><span class="p">,</span>
+                                                                <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">my_button</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;press me&#39;</span><span class="p">)</span>
+
+            <span class="c1"># to add widget to the main ui use ``main_layout``</span>
+            <span class="n">main_ui</span><span class="o">.</span><span class="n">main_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">my_button</span><span class="p">)</span>
+
+            <span class="c1"># to run function when user quit ui use ``ui_leaved``</span>
+            <span class="n">main_ui</span><span class="o">.</span><span class="n">ui_leaved</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">my_leave_function</span><span class="p">)</span>
+
+<span class="n">UI</span> <span class="o">=</span> <span class="n">SculptAnimUI</span><span class="p">()</span>
+<span class="n">UI</span><span class="o">.</span><span class="n">main_ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections.html#source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections" title="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.create_connections</span></code></a>()</p></td>
+<td><p>Create all connection of QWidget</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_context_menu.html#source.Qt.custom_widget.HTransparentDialogOnViewport.create_context_menu" title="source.Qt.custom_widget.HTransparentDialogOnViewport.create_context_menu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.create_context_menu</span></code></a>()</p></td>
+<td><p>Create the context menu</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_layout.html#source.Qt.custom_widget.HTransparentDialogOnViewport.create_layout" title="source.Qt.custom_widget.HTransparentDialogOnViewport.create_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.create_layout</span></code></a>()</p></td>
+<td><p>Create all layout of QWidget</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_widgets.html#source.Qt.custom_widget.HTransparentDialogOnViewport.create_widgets" title="source.Qt.custom_widget.HTransparentDialogOnViewport.create_widgets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.create_widgets</span></code></a>()</p></td>
+<td><p>Create all Widget of QWidget</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.eventFilter.html#source.Qt.custom_widget.HTransparentDialogOnViewport.eventFilter" title="source.Qt.custom_widget.HTransparentDialogOnViewport.eventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.eventFilter</span></code></a>(…)</p></td>
+<td><p>Create eventfilter to install on maya UI to detect UI event</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_widget.html#source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_widget" title="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.get_all_widget</span></code></a>()</p></td>
+<td><p>Return all widget using HTransparentDialogOnViewport</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_window.html#source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_window" title="source.Qt.custom_widget.HTransparentDialogOnViewport.get_all_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.get_all_window</span></code></a>([…])</p></td>
+<td><p>Return all top level maya window</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_pos_from_viewport.html#source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_pos_from_viewport" title="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_pos_from_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.get_window_pos_from_viewport</span></code></a>()</p></td>
+<td><p>Return widget position relative to the viewport</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect.html#source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect" title="source.Qt.custom_widget.HTransparentDialogOnViewport.get_window_rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.get_window_rect</span></code></a>(windows)</p></td>
+<td><p>Get the surface of given QObject</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window.html#source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window" title="source.Qt.custom_widget.HTransparentDialogOnViewport.install_filter_on_all_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.install_filter_on_all_window</span></code></a>(windows)</p></td>
+<td><p>Install event filter on all given window</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mask.html#source.Qt.custom_widget.HTransparentDialogOnViewport.mask" title="source.Qt.custom_widget.HTransparentDialogOnViewport.mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.mask</span></code></a>()</p></td>
+<td><p>Add the surface of all window and set mask on widget</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.maximize.html#source.Qt.custom_widget.HTransparentDialogOnViewport.maximize" title="source.Qt.custom_widget.HTransparentDialogOnViewport.maximize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.maximize</span></code></a>()</p></td>
+<td><p>Maximize widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.minimize.html#source.Qt.custom_widget.HTransparentDialogOnViewport.minimize" title="source.Qt.custom_widget.HTransparentDialogOnViewport.minimize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.minimize</span></code></a>()</p></td>
+<td><p>Minimize widget or hide it if windows is child</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseDoubleClickEvent.html#source.Qt.custom_widget.HTransparentDialogOnViewport.mouseDoubleClickEvent" title="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseDoubleClickEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.mouseDoubleClickEvent</span></code></a>(…)</p></td>
+<td><p>What to do in case of mouse doubleclick event</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseMoveEvent.html#source.Qt.custom_widget.HTransparentDialogOnViewport.mouseMoveEvent" title="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseMoveEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.mouseMoveEvent</span></code></a>(…)</p></td>
+<td><p>What to do in case of mouse move event</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mousePressEvent.html#source.Qt.custom_widget.HTransparentDialogOnViewport.mousePressEvent" title="source.Qt.custom_widget.HTransparentDialogOnViewport.mousePressEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.mousePressEvent</span></code></a>(…)</p></td>
+<td><p>What to do in case of mouse press event</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseReleaseEvent.html#source.Qt.custom_widget.HTransparentDialogOnViewport.mouseReleaseEvent" title="source.Qt.custom_widget.HTransparentDialogOnViewport.mouseReleaseEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.mouseReleaseEvent</span></code></a>(…)</p></td>
+<td><p>What to do in case of mouse release event</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.move_widget_with_viewport.html#source.Qt.custom_widget.HTransparentDialogOnViewport.move_widget_with_viewport" title="source.Qt.custom_widget.HTransparentDialogOnViewport.move_widget_with_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.move_widget_with_viewport</span></code></a>(event)</p></td>
+<td><p>Bind widget position to viewport</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.paintEvent.html#source.Qt.custom_widget.HTransparentDialogOnViewport.paintEvent" title="source.Qt.custom_widget.HTransparentDialogOnViewport.paintEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.paintEvent</span></code></a>(event)</p></td>
+<td><p>Paint the semi transparent window</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.ui_quit.html#source.Qt.custom_widget.HTransparentDialogOnViewport.ui_quit" title="source.Qt.custom_widget.HTransparentDialogOnViewport.ui_quit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.ui_quit</span></code></a>()</p></td>
+<td><p>delete the tool when quiting it and emit signal</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Qt.custom_widget.HTransparentDialogOnViewport.visibility.html#source.Qt.custom_widget.HTransparentDialogOnViewport.visibility" title="source.Qt.custom_widget.HTransparentDialogOnViewport.visibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HTransparentDialogOnViewport.visibility</span></code></a>()</p></td>
+<td><p>Hide widget if maya lose focus</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="source.Qt.custom_widget.HTransparentDialogOnViewport.create_connections.html" class="btn btn-neutral float-right" title="HTransparentDialogOnViewport.create_connections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source.Qt.custom_widget.HQSlider.html" class="btn btn-neutral float-left" title="HQSlider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Hugo potin. Theme based on Godot dark theme.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

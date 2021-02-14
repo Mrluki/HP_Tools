@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.mouseDoubleClickEvent
+===================================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.mouseDoubleClickEvent

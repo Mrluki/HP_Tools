@@ -1,0 +1,6 @@
+HTransparentDialogOnViewport.get\_viewport
+==========================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: HTransparentDialogOnViewport.get_viewport

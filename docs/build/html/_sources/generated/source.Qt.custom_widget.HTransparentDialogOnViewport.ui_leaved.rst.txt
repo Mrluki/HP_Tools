@@ -1,0 +1,6 @@
+HTransparentDialogOnViewport.ui\_leaved
+=======================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. autoattribute:: HTransparentDialogOnViewport.ui_leaved

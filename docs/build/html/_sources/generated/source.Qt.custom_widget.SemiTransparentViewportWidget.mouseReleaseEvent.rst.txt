@@ -1,0 +1,6 @@
+SemiTransparentViewportWidget.mouseReleaseEvent
+===============================================
+
+.. currentmodule:: source.Qt.custom_widget
+
+.. automethod:: SemiTransparentViewportWidget.mouseReleaseEvent
