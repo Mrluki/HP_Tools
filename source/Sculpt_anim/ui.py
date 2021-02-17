@@ -159,6 +159,7 @@ class SculptAnimUI(QtCore.QObject):
         self.param_button.clicked.connect(self.toggle_edit_mode)
         self.tweener_slider.sliderPressed.connect(self.init_tweener)
         self.delete_button.clicked.connect(logic.delete_current_target)
+        self.main_ui.ui_leaved.connect(self.main_ui_quit)
         self.tweener_slider.sliderMoved.connect(
             lambda: logic.tweener_previs(self.tweener_slider.value())
         )
@@ -370,7 +371,6 @@ class SculptAnimUI(QtCore.QObject):
             self.tweener_slider.default_value = twenner_value
 
         except pm.MayaNodeError:
-            pass
             self.key_button.set_style_sheet()
             self.param_button.setChecked(False)
 

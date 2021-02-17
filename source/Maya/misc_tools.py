@@ -1,3 +1,5 @@
+from functools import wraps
+
 import maya.cmds as cmds
 import maya.mel as mel
 import os
@@ -78,6 +80,22 @@ def import_gpu(file_name, path):
         cmds.parent(cache, groupe, relative=True)
 
 
+def get_reference():
+    """Get all the reference in file"""
+
+    all_ref = cmds.ls(type="reference")
+    references = []
+    for ref in all_ref:
+        try:
+            if cmds.referenceQuery(ref, il=True):
+                references.append(ref)
+            elif not cmds.referenceQuery(ref, il=True):
+                references.append(ref)
+        except RuntimeError:
+            pass
+    return references
+
+
 def get_namespace(objects):
     """get namespace of all selected object
 
@@ -103,39 +121,6 @@ def get_namespace(objects):
             if name_space not in namespaces:
                 namespaces.append(name_space)
     return namespaces
-
-
-def get_reference(state):
-    """return all reference in the given state (loaded/unloaded)
-
-    Example::
-
-        import Maya.misc_tools as mtools
-
-        loaded_ref = mtools.get_reference(True)
-        unloaded_ref = mtools.get_reference(False)
-
-    Args:
-        state (bool): ``True`` for loaded reference ``False`` for unloaded
-
-    Returns:
-        list: references in given state
-    """
-
-    all_ref = cmds.ls(type="reference")
-    references = []
-    for ref in all_ref:
-        if ref == "sharedReferenceNode":
-            continue
-        else:
-            if (
-                state
-                and cmds.referenceQuery(ref, il=True)
-                or not state
-                and not cmds.referenceQuery(ref, il=True)
-            ):
-                references.append(ref)
-    return references
 
 
 def get_target_index(blendshape, target):
@@ -226,6 +211,44 @@ def import_plug(**plugin):
                     cmds.loadPlugin("gpuCache", quiet=True)
                 except Exception:
                     raise Exception("Error loading gpuCache plugin!")
+
+
+def get_visible_mesh_from_namespace(namespace):
+    meshes = cmds.ls(type="mesh")
+    meshes = cmds.listRelatives(meshes, parent=True)
+    return [
+        mesh
+        for mesh in meshes
+        if visibility_check(mesh) is True and namespace in mesh and "Orig" not in mesh
+    ]
+
+
+def viewportOff(func):
+    """
+    Decorator - turn off Maya display while func is running.
+    if func will fail, the error will be raised after.
+
+    Args:
+        func (function) : function during when the viewport will be turned off
+    """
+
+    @wraps(func)
+    def wrap(*args, **kwargs):
+
+        # Turn $gMainPane Off:
+        mel.eval("paneLayout -e -manage false $gMainPane")
+
+        # Decorator will try/except running the function.
+        # But it will always turn on the viewport at the end.
+        # In case the function failed, it will prevent leaving maya viewport off.
+        try:
+            return func(*args, **kwargs)
+        except Exception:
+            raise  # will raise original error
+        finally:
+            mel.eval("paneLayout -e -manage true $gMainPane")
+
+    return wrap
 
 
 def visibility_check(obj):

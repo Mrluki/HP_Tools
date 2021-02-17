@@ -59,7 +59,7 @@ class SculptAnimLogic(QtCore.QObject):
         self.blendshape = self.mesh_short_name + "_anim_sculpt"
         self.target = "%s_BS_%s" % (
             self.mesh_short_name,
-            int(cmds.currentTime(query=True)),
+            mtools.get_time(3)[0],
         )
 
         # set up override attributes, cmds.objExists can't catch if a float constant node exist
@@ -105,7 +105,7 @@ class SculptAnimLogic(QtCore.QObject):
     def create_target(self):
         """create blendshape/target"""
 
-        time = int(cmds.currentTime(query=True))
+        time = mtools.get_time(3)[0]
         # Create the needed meshes
         self.target = "%s_BS_%s" % (self.mesh_short_name, time)
         # Create Group
@@ -183,7 +183,7 @@ class SculptAnimLogic(QtCore.QObject):
             cmds.setKeyframe(
                 self.blendshape,
                 attribute=self.target,
-                t=int(cmds.currentTime(query=True)),
+                t=mtools.get_time(3)[0],
                 v=1,
                 itt="linear",
                 ott="linear",
@@ -246,7 +246,7 @@ class SculptAnimLogic(QtCore.QObject):
         # create meshes
         self.target = "%s_BS_%s" % (
             self.mesh_short_name,
-            int(cmds.currentTime(query=True)),
+            mtools.get_time(3)[0],
         )
         self.create_temp()
         self.create_skin_temp()
@@ -315,7 +315,7 @@ class SculptAnimLogic(QtCore.QObject):
         # variable init
         self.target = "%s_BS_%s" % (
             self.mesh_short_name,
-            int(cmds.currentTime(query=True)),
+            mtools.get_time(3)[0],
         )
         res_name = self.target + "_reset"
 
@@ -394,7 +394,7 @@ class SculptAnimLogic(QtCore.QObject):
         """
         # Get current time and all frame with a key on it
 
-        time = int(cmds.currentTime(query=True))
+        time = mtools.get_time(3)[0]
         mykeys = self.get_target_keys()
 
         try:
@@ -415,7 +415,7 @@ class SculptAnimLogic(QtCore.QObject):
             int: preceding keyframe
         """
         # Get current time and all frame with a key on it
-        time = int(cmds.currentTime(query=True))
+        time = mtools.get_time(3)[0]
         mykeys = self.get_target_keys()
 
         try:
@@ -431,7 +431,7 @@ class SculptAnimLogic(QtCore.QObject):
 
     def is_key(self):
         """Check if there's a target on the current frame"""
-        time = int(cmds.currentTime(query=True))
+        time = mtools.get_time(3)[0]
         keyframe = self.get_target_keys()
         return keyframe is not None and time in keyframe
 
@@ -558,7 +558,7 @@ class SculptAnimLogic(QtCore.QObject):
                 # variable init
                 self.target = "%s_BS_%s" % (
                     self.mesh_short_name,
-                    int(cmds.currentTime(query=True)),
+                    mtools.get_time(3)[0],
                 )
                 self.prev_tgt = "%s_BS_%s" % (self.mesh_short_name, self.prev_key)
                 self.next_tgt = "%s_BS_%s" % (self.mesh_short_name, self.next_key)
@@ -706,7 +706,7 @@ class SculptAnimLogic(QtCore.QObject):
         """Delete target on current frame"""
 
         self.toggle_target()
-        time = int(cmds.currentTime(query=True))
+        time = mtools.get_time(3)[0]
 
         if self.is_key():
             # variable init

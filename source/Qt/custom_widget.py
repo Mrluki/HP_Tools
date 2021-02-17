@@ -1,7 +1,9 @@
 # PySide specific imports
+from PySide2 import QtCore, QtGui, QtWidgets
+
 # Software specific import
 import maya.OpenMayaUI as Omui
-from PySide2 import QtCore, QtGui, QtWidgets
+
 
 # shiboken specific imports
 from shiboken2 import wrapInstance
@@ -60,8 +62,68 @@ QSlider::handle:horizontal:pressed{
 QLabel{
     font-family: 'Roboto';
     font-style: normal;
-    font-size: 9pt;
-    font-weight: bold;"
+    font-size: 8pt;
+}
+QLineEdit {
+    background-color: rgba(43, 43, 43, 200);
+    border: 0px;
+    border-radius: 5px; 
+}
+
+QListWidget {
+    background-color: rgba(43, 43, 43, 200);
+    border: 0px;
+    border-radius: 5px; 
+}
+
+QScrollBar:vertical {              
+    border: none;
+    background:white;
+    width:5px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: #5d5d5d;
+    min-height: 0px;
+}
+QScrollBar::add-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));
+    height: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:horizontal {              
+    border: none;
+    background:white;
+    height:3px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #5d5d5d;
+    min-width: 0px;
+}
+QScrollBar::add-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));
+    width: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));
+    width: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
 }
 """
 
@@ -212,13 +274,14 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         """Create all Widget of QWidget"""
         icon_min = QtGui.QIcon(":/images/arrow_down.png")
         icon_close = QtGui.QIcon(":/images/cross.png")
+        icon_help = QtGui.QIcon(":/images/question.png")
         self.scale_window = QtWidgets.QSizeGrip(self)
         if self.window_parent is None:
             self.minimize_button = HButton(
                 icon=icon_min,
-                reduce_icon=-5,
+                reduce_icon=-4,
                 fixed=True,
-                size=[13, 13],
+                size=[17, 15],
                 color="transparent",
             )
         else:
@@ -235,13 +298,13 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         if self.orientation == "horizontal":
             self.main_layout = QtWidgets.QHBoxLayout()
             self.main_layout.setSpacing(10)
-            self.main_layout.setContentsMargins(5, 5, 3, 5)
+            self.main_layout.setContentsMargins(5, 5, 0, 5)
 
             self.scale_layout = QtWidgets.QVBoxLayout()
             self.scale_layout.addWidget(
                 self.minimize_button, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight
             )
-            self.scale_layout.setContentsMargins(0, 0, 3, 0)
+            self.scale_layout.setContentsMargins(0, 0, 0, 0)
             self.scale_layout.addStretch(1)
             self.scale_layout.addWidget(
                 self.scale_window, 0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight
@@ -255,26 +318,25 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
         if self.orientation == "vertical":
             self.main_layout = QtWidgets.QVBoxLayout()
-            self.main_layout.setSpacing(10)
-            self.main_layout.setContentsMargins(5, 0, 3, 5)
-
-            self.minimize_layout = QtWidgets.QVBoxLayout()
-            self.minimize_layout.addWidget(
-                self.minimize_button, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight
-            )
-            self.minimize_layout.setContentsMargins(0, 2, 2, 0)
+            self.main_layout.setSpacing(3)
+            self.main_layout.setContentsMargins(5, 3, 3, 5)
 
             self.scale_layout = QtWidgets.QVBoxLayout()
+            self.scale_layout.addWidget(
+                self.minimize_button, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight
+            )
             self.scale_layout.setContentsMargins(0, 0, 0, 0)
-            self.scale_layout.addStretch(1)
+            self.stretcher = QtWidgets.QSpacerItem(
+                0, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+            )
+            self.scale_layout.addItem(self.stretcher)
             self.scale_layout.addWidget(
                 self.scale_window, 0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight
             )
 
-            self.global_layout = QtWidgets.QVBoxLayout(self)
+            self.global_layout = QtWidgets.QHBoxLayout(self)
             self.global_layout.setContentsMargins(0, 0, 0, 0)
             self.global_layout.setSpacing(0)
-            self.global_layout.addLayout(self.minimize_layout, 0)
             self.global_layout.addLayout(self.main_layout, 1)
             self.global_layout.addLayout(self.scale_layout, 0)
 
@@ -450,8 +512,13 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         for item in item2:
             if item.widget() is not None:
                 item.widget().hide()
+        self.stretcher.changeSize(0, 0)
+
         # create the necessaries icons for the minimized window
         icon_max = QtGui.QIcon(":/images/arrow_up.png")
+        icon_tool = self.tool_icon.pixmap(
+            self.tool_icon.actualSize(QtCore.QSize(15, 15))
+        )
         self.maximize_button = HButton(
             icon=icon_max,
             reduce_icon=-5,
@@ -459,26 +526,25 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             size=[20, 20],
             color="transparent",
         )
-        self.tool_logo = HButton(
-            icon=self.tool_icon,
-            reduce_icon=0,
-            fixed=True,
-            size=[20, 20],
-            color="transparent",
-            hover_color="transparent",
-            pressed_color="transparent",
+        self.tool_logo = QtWidgets.QLabel()
+        self.tool_logo.setPixmap(
+            icon_tool.scaled(
+                15,
+                15,
+                QtCore.Qt.KeepAspectRatio,
+                QtCore.Qt.FastTransformation,
+            )
         )
 
         # connect button
         self.maximize_button.clicked.connect(self.maximize)
-        self.tool_logo.clicked.connect(self.maximize)
 
         # set layout
         self.global_layout.setSpacing(2)
         self.main_layout.setContentsMargins(0, 0, 3, 0)
         self.global_layout.addWidget(self.tool_logo)
         self.global_layout.addWidget(self.maximize_button)
-        self.setFixedSize(QtCore.QSize(50, 20))
+        self.setFixedSize(QtCore.QSize(40, 20))
         self.custom_pos = [self.pos().x(), self.pos().y()]
 
         # handle children
@@ -506,6 +572,9 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
                 item.widget().show()
         # reset the layout param
         self.global_layout.setSpacing(0)
+        self.stretcher.changeSize(
+            0, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        )
         self.main_layout.setContentsMargins(5, 5, 5, 5)
         self.setMinimumSize(0, 0)
         self.setMaximumSize(maya_main_window().size())
@@ -995,6 +1064,151 @@ class HIconLabel(QtWidgets.QWidget):
         layout.addStretch()
 
 
+class HStatus(QtWidgets.QWidget):
+    """Allow to display a name and a status that can be change by pressing
+        the status icon button
+
+        |
+
+        .. image:: /img/Qt/HStatus.gif
+                    :align: Center
+        |
+
+        Example::
+
+    # Module specific imports
+    import Qt.custom_widget as cstm_widget
+    # PySide specific imports
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
+    from PySide2 import QtGui
+
+    win = QtWidgets.QDialog()
+
+    layout = QtWidgets.QVBoxLayout(win)
+
+    reference = 'rig1RN'
+    item_name = 'rig1'
+    status = 'green'
+
+    widget = cstm_widget.HStatus(
+        object_name=reference, item_name=item_name, status=status
+        )
+
+    # if you want to change the status name in the pop up menu
+    widget.green_action.setText('load')
+    widget.orange_action.setText('cache')
+    widget.red_action.setText('unload')
+
+    layout.addWidget(my_label)
+
+    win.show()
+
+        Args:
+            object_name (str): name of the widget
+            item_name (str): name of the item that will be displayed
+            item_status (str): current status of the item
+
+    """
+
+    # Signals
+    status = QtCore.Signal(dict)
+
+    def __init__(self, object_name=None, item_name=None, status="green"):
+        super(HStatus, self).__init__()
+
+        self.item_name = item_name
+        self.item_status = status
+        self.green_icon = QtGui.QIcon(":/images/green_icon.png")
+        self.orange_icon = QtGui.QIcon(":/images/orange_icon.png")
+        self.red_icon = QtGui.QIcon(":/images/red_icon.png")
+
+        self.setObjectName(object_name)
+        self.create_widgets()
+        self.create_layout()
+        self.create_status_menu()
+
+        self.setStyleSheet(DEFAULT_CSS)
+
+    def create_widgets(self):
+        """Create all widget of QWidget"""
+        self.iten_name_label = QtWidgets.QLabel(self.item_name)
+        self.iten_name_label.setStyleSheet("background-color: transparent")
+        self.iten_name_label.setFont(QtGui.QFont("Roboto", 8))
+        self.status_icon = HButton(
+            icon=self.green_icon,
+            size=[15, 15],
+            fixed=True,
+            color="transparent",
+        )
+        self.change_status({self: self.item_status})
+        self.status.connect(self.change_status)
+
+    def create_layout(self):
+        """Create all layout of QWidget"""
+        self.item_layout = QtWidgets.QHBoxLayout(self)
+        self.item_layout.setContentsMargins(2, 5, 2, 5)
+        self.item_layout.addWidget(self.iten_name_label, 1)
+        self.item_layout.addWidget(self.status_icon)
+
+    def status_menu_popup(self):
+        """Make context menu appear on cursor pos"""
+        self.status_menu.popup(QtGui.QCursor.pos())
+
+    def create_status_menu(self):
+        """Populate status popup menu"""
+        self.status_icon.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.status_icon.clicked.connect(self.status_menu_popup)
+
+        self.status_menu = QtWidgets.QMenu()
+        self.status_menu.setAttribute(QtCore.Qt.WA_NoSystemBackground, True)
+        self.status_menu.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+        self.status_menu.setWindowOpacity(0.9)
+
+        self.green_action = QtWidgets.QAction(self.status_menu)
+        self.green_action.setObjectName("green")
+        self.green_action.setText("green")
+        self.green_action.setIcon(self.green_icon)
+        self.green_action.triggered.connect(lambda: self.status.emit({self: "green"}))
+
+        self.orange_action = QtWidgets.QAction(self.status_menu)
+        self.orange_action.setObjectName("orange")
+        self.orange_action.setText("orange")
+        self.orange_action.setIcon(self.orange_icon)
+        self.orange_action.triggered.connect(lambda: self.status.emit({self: "orange"}))
+
+        self.red_action = QtWidgets.QAction(self.status_menu)
+        self.red_action.setObjectName("red")
+        self.red_action.setText("red")
+        self.red_action.setIcon(self.red_icon)
+        self.red_action.triggered.connect(lambda: self.status.emit({self: "red"}))
+
+        self.status_menu.addAction(self.green_action)
+        self.status_menu.addAction(self.orange_action)
+        self.status_menu.addAction(self.red_action)
+
+    def change_status(self, status_dict):
+        """Change the status icon of the item
+
+        Args:
+            status_dict (dict): {widget, widget_status} the icon of the widget will be set
+            to widget_status, accepted value for widget_status are ``green``, ``orange``, ``red``
+        """
+        for item, status in status_dict.items():
+            if status == "green":
+                self.status_icon.set_icon(self.green_icon)
+                self.item_status = "green"
+            if status == "orange":
+                self.status_icon.set_icon(self.orange_icon)
+                self.item_status = "orange"
+            if status == "red":
+                self.status_icon.set_icon(self.red_icon)
+                self.item_status = "red"
+
+
+# Qt_utils need to be put in own module when there will be a bit more
+
+
 def maya_main_window():
     """Return the Maya main window widget as a Python object"""
     main_window_ptr = Omui.MQtUtil.mainWindow()
@@ -1005,3 +1219,22 @@ def get_viewport():
     """Return Maya Viewport as a python object"""
     viewport_ptr = Omui.M3dView.active3dView().widget()
     return wrapInstance(long(viewport_ptr), QtWidgets.QWidget)
+
+
+def selected_widget_qlist_widget(qlist_widget):
+    """return all selected widget in QListWidget
+
+    Args:
+        qlist_widget (QtWidget.QlistWidget): list to get selected item from
+
+    Returns:
+        [list]: Selected widgets
+    """
+    selected_row = [x.row() for x in qlist_widget.selectedIndexes()]
+    selected_widget = []
+    for row in selected_row:
+        item = qlist_widget.item(row)
+        widget = qlist_widget.itemWidget(item)
+        if widget is not None:
+            selected_widget.append(widget)
+    return selected_widget
