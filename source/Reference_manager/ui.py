@@ -1,4 +1,5 @@
 # PySide specific imports
+import Reference_manager.logic
 from PySide2 import QtCore
 from PySide2 import QtWidgets
 from PySide2 import QtGui
@@ -15,13 +16,7 @@ from functools import wraps
 import Qt.custom_widget as cstm_widget
 import Qt.icon_rc
 
-reload(Qt.icon_rc)
-import Reference_manager.logic
-
-reload(Reference_manager.logic)
 logic = Reference_manager.logic.ReferenceManagerLogic()
-
-reload(cstm_widget)
 
 TOOL_ICON = QtGui.QIcon(":/images/person-silhouette.png")
 ICON_HELP = QtGui.QIcon(":/images/question.png")
@@ -246,12 +241,5 @@ class ReferenceManager(QtCore.QObject):
         self.populate(logic.rigs)
 
 
-if __name__ == "__main__":
-
-    try:
-        Rig_manager.close()  # pylint: disable=E0601
-        Rig_manager.deleteLater()
-    except:
-        pass
-    Rig_manager = ReferenceManager()
-    Rig_manager.main_ui.show()
+# Rig_manager = ReferenceManager()
+# Rig_manager.main_ui.show()

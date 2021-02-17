@@ -15,8 +15,6 @@ import pymel.core as pm
 import maya.mel as mel
 import Maya.misc_tools as mtools
 
-reload(mtools)
-
 
 class ReferenceManagerLogic(QtCore.QObject):
     """Rig manager tool Logic"""
