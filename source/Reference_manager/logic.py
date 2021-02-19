@@ -70,7 +70,9 @@ class ReferenceManagerLogic(QtCore.QObject):
                 try:
                     cmds.file(loadReference=self.reference)
                 except RuntimeError:
-                    pass
+                    cmds.warning(
+                        "Error were raised while loading {0}".format(self.reference)
+                    )
                 self.create_cache()
                 self.widget.change_status({self.widget: "orange"})
 
@@ -80,16 +82,20 @@ class ReferenceManagerLogic(QtCore.QObject):
 
             elif state_dest == "red" and current_state == "green":
                 try:
-                    cmds.file(unLoadReference=self.reference)
+                    cmds.file(unloadReference=self.reference)
                 except RuntimeError:
-                    pass
+                    cmds.warning(
+                        "Error were raised while loading {0}".format(self.reference)
+                    )
                 self.widget.change_status({self.widget: "red"})
 
             elif state_dest == "green" and current_state == "orange":
                 try:
                     cmds.file(loadReference=self.reference)
                 except RuntimeError:
-                    pass
+                    cmds.warning(
+                        "Error were raised while loading {0}".format(self.reference)
+                    )
                 cmds.delete(self.namespace + "_cache")
                 self.widget.change_status({self.widget: "green"})
 
@@ -97,7 +103,9 @@ class ReferenceManagerLogic(QtCore.QObject):
                 try:
                     cmds.file(loadReference=self.reference)
                 except RuntimeError:
-                    pass
+                    cmds.warning(
+                        "Error were raised while loading {0}".format(self.reference)
+                    )
                 self.widget.change_status({self.widget: "green"})
 
     def get_current_state(self):

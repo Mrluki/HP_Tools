@@ -32,6 +32,7 @@ class ReferenceManager(QtCore.QObject):
         self.create_layout()
         self.create_context_menu()
         self.create_connections()
+        logic.get_rigs
         self.populate(logic.rigs)
 
     def create_widgets(self):
@@ -161,7 +162,6 @@ class ReferenceManager(QtCore.QObject):
             status_dict ([dict]): {widget, widget_status} the icon of the widget will be set
         """
         self.main_ui.hide()
-        self.main_ui.visible = False
         # will try/except running the function.But will always turn on the tool window
         try:
             selected_widget = cstm_widget.selected_widget_qlist_widget(
@@ -175,7 +175,6 @@ class ReferenceManager(QtCore.QObject):
             raise  # will raise original error
         finally:
             self.main_ui.show()
-            self.main_ui.visible = True
 
     def all_state(self, state):
         """change state for all visible item in QlistWidget
@@ -184,7 +183,6 @@ class ReferenceManager(QtCore.QObject):
             state ([str]): accepted value for widget_status are ``green``, ``orange``, ``red``
         """
         self.main_ui.hide()
-        self.main_ui.visible = False
         # will try/except running the function.But will always turn on the tool window
         try:
             for i in range(self.reference_list.count()):
@@ -194,14 +192,11 @@ class ReferenceManager(QtCore.QObject):
             selected_widget = cstm_widget.selected_widget_qlist_widget(
                 self.reference_list
             )
-            if state == "orange":
-                logic.update_status(selected_widget, {selected_widget[0]: "green"})
             logic.update_status(selected_widget, {selected_widget[0]: state})
         except Exception:
             raise  # will raise original error
         finally:
             self.main_ui.show()
-            self.main_ui.visible = True
 
     def update_display(self, text):
         """update widget displayed in Qlist widget

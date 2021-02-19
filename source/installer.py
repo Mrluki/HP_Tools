@@ -18,23 +18,41 @@ import maya.mel as mel
 HP_TOOLS_ICON = QtGui.QPixmap(":/images/h_tool_logo.png")
 TOOL_PATH = os.path.split(os.path.abspath(__file__))[0]
 SCULPT_ANIM_ICON = TOOL_PATH + "/Sculpt_anim/Sculpt_anim_icon.png"
+REFERENCE_MANAGER_ICON = TOOL_PATH + "/Reference_manager/reference_manager_icon.png"
 installer_UI = None
 SCULPT_ANIM_COMMAND = """
+
 
 import Sculpt_anim.ui as sculpt_anim
 
 try:
-    UI.main_ui.close()
-    UI.main_ui.deleteLater()
-    UI.main_ui_quit()
+    sculpt_anim_ui.main_ui.close()
+    sculpt_anim_ui.main_ui.deleteLater()
 except (RuntimeError, TypeError, NameError):
     pass
 except Exception as e:
     cmds.warning(e)
 
 
-sculpt_anim_UI = sculpt_anim.SculptAnimUI()
-sculpt_anim_UI.main_ui.show()
+sculpt_anim_ui = sculpt_anim.SculptAnimUI()
+sculpt_anim_ui.main_ui.show()
+"""
+REFERENCE_MANAGER_COMMAND = """
+
+import Reference_manager.ui as reference_manager
+
+try:
+    reference_manager_ui.main_ui.close()
+    reference_manager_ui.main_ui.deleteLater()
+    reference_manager_ui.main_ui_quit()
+except (RuntimeError, TypeError, NameError):
+    pass
+except Exception as e:
+    cmds.warning(e)
+
+
+reference_manager_ui = reference_manager.ReferenceManager()
+reference_manager_ui.main_ui.show()
 """
 
 TOOLS = [
@@ -44,7 +62,14 @@ TOOLS = [
         "annotation": "",
         "image1": SCULPT_ANIM_ICON,
         "sourceType": "python",
-    }
+    },
+    {
+        "label": "refrence manager",
+        "command": REFERENCE_MANAGER_COMMAND,
+        "annotation": "",
+        "image1": REFERENCE_MANAGER_ICON,
+        "sourceType": "python",
+    },
 ]
 
 

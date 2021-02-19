@@ -10,6 +10,8 @@ import os
 
 # Module specific imports
 import Qt.custom_widget as cstm_widget
+
+reload(cstm_widget)
 import Maya.custom_marking_menu as cstm_menu
 import Qt.icon_rc
 import Sculpt_anim.logic
@@ -282,11 +284,8 @@ class SculptAnimUI(QtCore.QObject):
         # init
         logic.mesh_init(mesh[0])
         self.mesh_label.setText(mesh[0])
-        try:  # Check if the blendshape node exist
-            pm.PyNode(logic.blendshape)
+        if cmds.objExists(logic.blendshape):
             cmds.select(logic.blendshape)
-        except pm.MayaNodeError:
-            pass
 
         # enable widget
         self.previous_key_button.setEnabled(True)
@@ -340,8 +339,7 @@ class SculptAnimUI(QtCore.QObject):
             *args: Allow maya to pass args
         """
         time = int(cmds.currentTime(query=True))
-        try:  # Check if the blendshape node exist
-            pm.PyNode(logic.blendshape)
+        if cmds.objExists(logic.blendshape):
             if time != self.current_time:
                 self.current_time = time
                 # If a pose was edited run the leave edit fct
@@ -370,7 +368,7 @@ class SculptAnimUI(QtCore.QObject):
             self.tweener_slider.setValue(twenner_value)
             self.tweener_slider.default_value = twenner_value
 
-        except pm.MayaNodeError:
+        else:
             self.key_button.set_style_sheet()
             self.param_button.setChecked(False)
 

@@ -139,7 +139,7 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
     Todo:
         * Allow to minimize the window to different side (top left, top right, bottom left, bottom right)
-        * hide on maya prompt
+        * hide on maya prompt / maya calculation
         * Improve UI positioning when rescaling maya,something like ui pos * (viewport size full screen/viewport size current)
 
     Args:
@@ -203,7 +203,7 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         orientation="horizontal",
         opacity=0.5,
     ):
-        super(HTransparentDialogOnViewport, self).__init__(parent)
+        super(HTransparentDialogOnViewport, self).__init__(maya_main_window())
 
         # class attribute
         self.window_parent = parent
@@ -212,7 +212,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         self.default_pos = self.custom_pos
         self.custom_size = size
         self.default_size = self.custom_size
-        self.visible = visible
         self.tool_icon = tool_icon
         self.orientation = orientation
         self.opacity = opacity
@@ -220,8 +219,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         # Function instance attribute
         self.child = []
         self.child_visibility = {}
-        self.widgets = self.get_all_widget()
-        self.window = self.get_all_window()
         self.move_enabled = False
         self.initial_mouse_pos = None
         self.global_mouse_pos = None
@@ -232,17 +229,10 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         self.viewport = get_viewport()
         self.viewport.installEventFilter(self)
 
-        self.install_filter_on_all_window(self.window)
-        self.install_filter_on_all_window(self.widgets)
-
         # window appearance
         self.setWindowTitle(object_name)
         self.setStyleSheet(DEFAULT_CSS)
-        self.setWindowFlags(
-            QtCore.Qt.FramelessWindowHint
-            | QtCore.Qt.WindowStaysOnTopHint
-            | QtCore.Qt.SplashScreen
-        )
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.SplashScreen)
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground, True)
         self.setAttribute(QtCore.Qt.WA_AlwaysShowToolTips, True)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
@@ -348,59 +338,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             self.minimize_button.clicked.connect(self.ui_quit)
         self.action_quit.triggered.connect(self.ui_quit)
 
-    def get_window_rect(self, windows):
-        """Get the surface of given QObject
-
-        for example if you ask for all maya window surface(maya main window
-        is automatically removed)
-        it will return the red surface as QRect
-
-        .. image:: /img/qt/get_window_rect.png
-
-        Args:
-            windows (list): Windows for which you want to have the added surface
-                area
-
-        Returns:
-            QtCore.Qrect: Surface of the given window
-        """
-        windows_rect = []
-        for window in windows:
-            # we don't want the main window
-            if "Autodesk" not in window.windowTitle():
-                global_pos = self.mapToGlobal(QtCore.QPoint(0, 0))
-                pos = window.mapFromGlobal(global_pos)
-                # adding the header to the overall pos
-                pos = QtCore.QPoint((pos.x() * -1) - 1, (pos.y() * -1) - 30)
-                size = window.size()
-                # adding the header to the overall size
-                size = QtCore.QSize(size.width() + 2, size.height() + 30)
-                rect = QtCore.QRect(pos, size)
-                windows_rect.append(rect)
-        return windows_rect
-
-    def mask(self):
-        """Add the surface of all window and set mask on widget"""
-        window_to_hide = [window for window in self.window if not window.isMinimized()]
-        all_rect = self.get_window_rect(window_to_hide)
-        mask = QtGui.QRegion(0, 0, 0, 0)
-        for window in all_rect:
-            mask = QtGui.QRegion(window).united(mask)
-        widget_region = QtGui.QRegion(
-            QtCore.QRect(QtCore.QPoint(), self.main_window.size())
-        )
-        self.setMask(widget_region.subtracted(mask))
-
-    def install_filter_on_all_window(self, windows):
-        """Install event filter on all given window
-
-        Args:
-            windows (list): Windows on which you want to install the event
-                filter
-        """
-        for window in windows:
-            window.installEventFilter(self)
-
     def get_window_pos_from_viewport(self):
         """Return widget position relative to the viewport
 
@@ -409,27 +346,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         """
         pos = self.mapToGlobal(QtCore.QPoint(0, 0))
         return self.viewport.mapFromGlobal(pos)
-
-    def get_all_window(self, widget=False):
-        """Return all top level maya window
-
-        Args:
-            widget (bool): if function should return HTransparentDialogOnViewport
-                widgets or not
-        """
-        tops = QtWidgets.qApp.topLevelWidgets()
-        return [
-            top
-            for top in tops
-            if top.isWindow()
-            and not top.isHidden()
-            and (
-                widget is False
-                and "HTransparentDialogOnViewport" not in str(top)
-                and top.windowTitle() != self.windowTitle()
-                or widget is not False
-            )
-        ]
 
     def move_widget_with_viewport(self, event):
         """Bind widget position to viewport
@@ -486,18 +402,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             self.move(pos)
             self.vertical_pos = self.get_window_pos_from_viewport()
 
-    def visibility(self):
-        """Hide widget if maya lose focus"""
-        self.widgets = self.get_all_widget()
-        if QtWidgets.QApplication.activeWindow() is None:
-            for i in self.widgets:
-                if i.visible:
-                    i.hide()
-        else:
-            for i in self.widgets:
-                if not i.isVisible() and i.visible:
-                    i.show()
-
     def minimize(self):
         """Minimize widget or hide it if windows is child"""
         # remember the current widget size
@@ -512,7 +416,8 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         for item in item2:
             if item.widget() is not None:
                 item.widget().hide()
-        self.stretcher.changeSize(0, 0)
+        if self.orientation == "vertical":
+            self.stretcher.changeSize(0, 0)
 
         # create the necessaries icons for the minimized window
         icon_max = QtGui.QIcon(":/images/arrow_up.png")
@@ -552,7 +457,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             if child.isVisible():
                 self.child_visibility[child] = True
                 child.hide()
-                child.visible = False
             else:
                 self.child_visibility[child] = False
 
@@ -572,9 +476,10 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
                 item.widget().show()
         # reset the layout param
         self.global_layout.setSpacing(0)
-        self.stretcher.changeSize(
-            0, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
-        )
+        if self.orientation == "vertical":
+            self.stretcher.changeSize(
+                0, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+            )
         self.main_layout.setContentsMargins(5, 5, 5, 5)
         self.setMinimumSize(0, 0)
         self.setMaximumSize(maya_main_window().size())
@@ -587,7 +492,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         for child, vis_state in self.child_visibility.iteritems():
             if vis_state:
                 child.show()
-                child.visible = True
             else:
                 continue
 
@@ -625,16 +529,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             self.hide()
             self.visible = False
 
-    @staticmethod
-    def get_all_widget():
-        """Return all widget using HTransparentDialogOnViewport"""
-        tops = QtWidgets.qApp.topLevelWidgets()
-        return [
-            top
-            for top in tops
-            if top.isWindow() and "HTransparentDialogOnViewport" in str(top)
-        ]
-
     def paintEvent(self, event):
         """Paint the semi transparent window
 
@@ -662,36 +556,15 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         """
         # Main window events
         if obj == self.main_window:
-            if event.type() == QtCore.QEvent.ActivationChange:
-                self.visibility()
-                self.window = self.get_all_window()
-                self.install_filter_on_all_window(self.window)
-                self.mask()
             if event.type() == QtCore.QEvent.Move:
                 self.move_widget_with_viewport(event.type())
             if event.type() == QtCore.QEvent.Resize:
                 self.viewport_size_old = self.viewport.size()
-            if event.type() == QtCore.QEvent.Hide:
-                self.visibility()
-            if event.type() == QtCore.QEvent.Show:
-                self.visibility()
+
         # Viewport events
         if obj == self.viewport and event.type() == QtCore.QEvent.Resize:
             self.move_widget_with_viewport(event.type())
-        # Child window events
-        for window in self.window:
-            if obj == window:
-                if event.type() == QtCore.QEvent.Move:
-                    self.mask()
-                elif event.type() == QtCore.QEvent.Resize:
-                    self.mask()
-                elif event.type() == QtCore.QEvent.ActivationChange:
-                    self.visibility()
-                elif event.type() == QtCore.QEvent.WindowStateChange:
-                    self.mask()
-        for widget in self.widgets:
-            if obj == widget and event.type() == QtCore.QEvent.ActivationChange:
-                self.visibility()
+
         return False
 
     def mousePressEvent(self, mouse_event):

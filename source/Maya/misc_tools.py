@@ -92,7 +92,7 @@ def get_reference():
             elif not cmds.referenceQuery(ref, il=True):
                 references.append(ref)
         except RuntimeError:
-            pass
+            cmds.warning("Reference node isn't reference file")
     return references
 
 
@@ -279,12 +279,15 @@ def visibility_check(obj):
     Returns:
         Boolean: The visibility of one object
     """
-    sel_list = Om.MSelectionList()
-    sel_list.add(obj)
-    dag_path = Om.MDagPath()
-    component = Om.MObject()
-    sel_list.getDagPath(0, dag_path, component)
-    return Om.MDagPath.isVisible(dag_path)
+    try:
+        sel_list = Om.MSelectionList()
+        sel_list.add(obj)
+        dag_path = Om.MDagPath()
+        component = Om.MObject()
+        sel_list.getDagPath(0, dag_path, component)
+        return Om.MDagPath.isVisible(dag_path)
+    except:
+        return False
 
 
 def unlock_attribute(mesh):

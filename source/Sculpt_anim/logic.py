@@ -144,9 +144,7 @@ class SculptAnimLogic(QtCore.QObject):
             cmds.setAttr("%s.visibility" % self.target, 0)
 
         # Create Blendshape node
-        try:  # Check if the blendshape node exist
-            pm.PyNode(self.blendshape)
-        except pm.MayaNodeError:
+        if not cmds.objExists(self.blendshape):
             cmds.blendShape(self.mesh, n=self.blendshape, par=True)
             if cmds.objExists("parallelBlender"):
                 cmds.rename("parallelBlender", self.mesh_short_name + "_par")
@@ -397,15 +395,12 @@ class SculptAnimLogic(QtCore.QObject):
         time = mtools.get_time(3)[0]
         mykeys = self.get_target_keys()
 
-        try:
-            pm.PyNode(self.blendshape)
+        if cmds.objExists(self.blendshape):
             mykeys = sorted(mykeys)
             # Compare current to frame and set the new time
             for j in mykeys:
                 if time < j:
                     return j
-        except pm.MayaNodeError:
-            pass
 
     def get_previous_key(self):
         """
@@ -418,16 +413,12 @@ class SculptAnimLogic(QtCore.QObject):
         time = mtools.get_time(3)[0]
         mykeys = self.get_target_keys()
 
-        try:
-            pm.PyNode(self.blendshape)
+        if cmds.objExists(self.blendshape):
             mykeys = sorted(mykeys, reverse=True)
             # Compare current to frame and return preceding frame
             for j in mykeys:
                 if time > j:
                     return j
-
-        except pm.MayaNodeError:
-            pass
 
     def is_key(self):
         """Check if there's a target on the current frame"""
@@ -451,8 +442,7 @@ class SculptAnimLogic(QtCore.QObject):
 
     def get_target_keys(self):
         """return all key on which there's a key"""
-        try:
-            pm.PyNode(self.blendshape)
+        if cmds.objExists(self.blendshape):
             anim_curve = cmds.listConnections(self.blendshape, type="animCurve")
             keyframe = []
             for i in anim_curve:
@@ -461,8 +451,6 @@ class SculptAnimLogic(QtCore.QObject):
                     if k not in keyframe:
                         keyframe.append(int(k))
             return keyframe
-        except pm.MayaNodeError:
-            pass
 
     def get_vertex_pos(self, object):
         """
@@ -517,6 +505,9 @@ class SculptAnimLogic(QtCore.QObject):
 
     def move_vertex(self, mesh, pointList):
         """move vertex of given mesh to new position
+
+        Todo:
+            convert function to plugin and implement undo
 
         Args:
             mesh (str): mesh that vertex need to be updated
@@ -691,7 +682,6 @@ class SculptAnimLogic(QtCore.QObject):
         """set overide to default"""
 
         try:
-            pm.Node(self.blendshape)
             cmds.setAttr("%s.inFloat" % self.display_type_node, 0)
             cmds.setAttr("%s.inFloat" % self.enable_override_node, 0)
             cmds.setAttr("%s.inFloat" % self.visibility_override_node, 0)
@@ -699,7 +689,7 @@ class SculptAnimLogic(QtCore.QObject):
             pm.delete(self.enable_override_node)
             pm.delete(self.display_type_node)
         except:
-            pass
+            cmds.warning("sculpt anim mesh locking node doesn't exist")
         cmds.setToolTo("selectSuperContext")
 
     def delete_current_target(self):
@@ -753,7 +743,10 @@ class SculptAnimLogic(QtCore.QObject):
         self.toggle_target(lock_=True)
 
     def cursor_on_mesh(self):
-        """Emit a signal if a click happen on a mesh"""
+        """Emit a signal if a click happen on a mesh
+        Todo:
+            Need to be converted to a real context file
+        """
 
         # get cursor pos
         vp_x, vp_y, _ = cmds.draggerContext(self.ctx, query=True, anchorPoint=True)
