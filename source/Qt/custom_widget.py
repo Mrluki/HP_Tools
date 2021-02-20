@@ -139,7 +139,9 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
     Todo:
         * Allow to minimize the window to different side (top left, top right, bottom left, bottom right)
-        * hide on maya prompt / maya calculation
+        Done:
+        * hide on maya prompt / maya calculation (reparented to maya main-window 
+            and changing some param allowed to remove the visibility and mask fct )
         * Improve UI positioning when rescaling maya,something like ui pos * (viewport size full screen/viewport size current)
 
     Args:
@@ -162,7 +164,7 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
     Example::
 
-        import HP_Tools.Qt.custom_widget as cstm_widget
+        import Qt.custom_widget as cstm_widget
 
         TOOL_ICON = QtGui.QIcon(":/images/my_tool_icon.png")
 
@@ -171,20 +173,21 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
                     super(MyCustomUI, self).__init__()
 
                     # ui creation
-                    main_ui = cstm_widget.HTransparentDialogOnViewport('anim sculpt',
+                    self.main_ui = cstm_widget.HTransparentDialogOnViewport('anim sculpt',
                                                                         pos=[10, 10],
                                                                         size=[400, 30],
                                                                         tool_icon=TOOL_ICON,
                                                                         visible=True)
-                    my_button = QtWidgets.QPushButton('press me')
+                    self.my_button = QtWidgets.QPushButton('press me')
 
                     # to add widget to the main ui use ``main_layout``
-                    main_ui.main_layout.addWidget(my_button)
+                    self.main_ui.main_layout.addWidget(self.my_button)
+
 
                     # to run function when user quit ui use ``ui_leaved``
-                    main_ui.ui_leaved.connect(my_leave_function)
+                    self.main_ui.ui_leaved.connect(my_leave_function)
 
-        UI = SculptAnimUI()
+        UI = MyCustomUI()
         UI.main_ui.show()
 
     """
@@ -222,6 +225,7 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         self.move_enabled = False
         self.initial_mouse_pos = None
         self.global_mouse_pos = None
+        self.viewport_zone = {}
 
         # install event filter
         self.main_window = maya_main_window()
@@ -237,8 +241,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         self.setAttribute(QtCore.Qt.WA_AlwaysShowToolTips, True)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
         self.setToolTip("Move        Click + drag\nReset pos  Double click")
-        self.mask()
-
         # overlay placement
         self.viewport_size_old = self.viewport.size()
 
@@ -252,7 +254,8 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         size = QtCore.QSize(self.custom_size[0], self.custom_size[1])
         viewport_rect = QtCore.QRect(pos, size)
         self.setGeometry(viewport_rect)
-        self.vertical_pos = self.get_window_pos_from_viewport()
+        self.set_window_zone()
+        self.window_pos_from_vp = self.get_window_pos_from_viewport()
 
         # Widgets init
         self.create_widgets()
@@ -358,49 +361,230 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
             event (QtCore.QEvent): pass QEvent to function
         """
         if event == QtCore.QEvent.Resize:
-            if self.vertical_pos.x() >= (self.viewport.size().width()) / 2:
-                new_viewport_pos = self.viewport.mapToGlobal(self.viewport.pos())
-                if self.viewport_size_old != self.viewport.size():
-                    if self.viewport_pos == new_viewport_pos:
-                        pos = QtCore.QPoint(
-                            self.viewport_pos.x()
-                            + self.vertical_pos.x()
-                            - (
-                                self.viewport_size_old.width()
-                                - self.viewport.size().width()
-                            ),
-                            self.viewport_pos.y() + self.vertical_pos.y(),
-                        )
-                        self.move(pos)
-                        self.vertical_pos = self.get_window_pos_from_viewport()
-                        self.viewport_size_old = self.viewport.size()
-                    else:
-                        self.viewport_pos = self.viewport.pos()
-                        self.viewport_pos = self.viewport.mapToGlobal(self.viewport_pos)
-                        pos = QtCore.QPoint(
-                            self.viewport_pos.x() + self.vertical_pos.x(),
-                            self.viewport_pos.y() + self.vertical_pos.y(),
-                        )
-                        self.move(pos)
-                        self.vertical_pos = self.get_window_pos_from_viewport()
-            else:
+            if self.viewport_size_old != self.viewport.size():
                 self.viewport_pos = self.viewport.pos()
                 self.viewport_pos = self.viewport.mapToGlobal(self.viewport_pos)
-                pos = QtCore.QPoint(
-                    self.viewport_pos.x() + self.vertical_pos.x(),
-                    self.viewport_pos.y() + self.vertical_pos.y(),
-                )
-                self.move(pos)
-                self.vertical_pos = self.get_window_pos_from_viewport()
+
+                if self.current_position == "top-left":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x() + self.window_pos_from_vp.x(),
+                        self.viewport_pos.y() + self.window_pos_from_vp.y(),
+                    )
+                    self.move(pos)
+
+                elif self.current_position == "left":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x() + self.window_pos_from_vp.x(),
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        )
+                        / 2,
+                    )
+                    self.move(pos)
+
+                elif self.current_position == "bottom-left":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x() + self.window_pos_from_vp.x(),
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        )
+                        / 2,
+                    )
+                    self.move(pos)
+                elif self.current_position == "top":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        )
+                        / 2,
+                        self.viewport_pos.y() + self.window_pos_from_vp.y(),
+                    )
+                    self.move(pos)
+                elif self.current_position == "center":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        )
+                        / 2,
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        )
+                        / 2,
+                    )
+                    self.move(pos)
+                elif self.current_position == "bottom":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        )
+                        / 2,
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        ),
+                    )
+                    self.move(pos)
+
+                elif self.current_position == "top-right":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        ),
+                        self.viewport_pos.y() + self.window_pos_from_vp.y(),
+                    )
+                    self.move(pos)
+
+                elif self.current_position == "right":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        ),
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        )
+                        / 2,
+                    )
+                    self.move(pos)
+
+                elif self.current_position == "bottom-right":
+                    pos = QtCore.QPoint(
+                        self.viewport_pos.x()
+                        + self.window_pos_from_vp.x()
+                        - (
+                            self.viewport_size_old.width()
+                            - self.viewport.size().width()
+                        ),
+                        self.viewport_pos.y()
+                        + self.window_pos_from_vp.y()
+                        - (
+                            self.viewport_size_old.height()
+                            - self.viewport.size().height()
+                        ),
+                    )
+                    self.move(pos)
+
+                self.viewport_size_old = self.viewport.size()
+                self.window_pos_from_vp = self.get_window_pos_from_viewport()
+
         elif event == QtCore.QEvent.Move:
             self.viewport_pos = self.viewport.pos()
             self.viewport_pos = self.viewport.mapToGlobal(self.viewport_pos)
             pos = QtCore.QPoint(
-                self.viewport_pos.x() + self.vertical_pos.x(),
-                self.viewport_pos.y() + self.vertical_pos.y(),
+                self.viewport_pos.x() + self.window_pos_from_vp.x(),
+                self.viewport_pos.y() + self.window_pos_from_vp.y(),
             )
             self.move(pos)
-            self.vertical_pos = self.get_window_pos_from_viewport()
+            self.window_pos_from_vp = self.get_window_pos_from_viewport()
+
+    def set_window_zone(self):
+        """Assign a zone to the widget depending of it's relative position to the viewport"""
+        x_pos = self.get_window_pos_from_viewport().x() + self.size().width() / 2
+        y_pos = self.get_window_pos_from_viewport().y() + self.size().height() / 2
+        self.get_viewport_zone()
+
+        if (
+            x_pos < 0
+            or y_pos < 0
+            or x_pos > self.viewport.size().width()
+            or y_pos > self.viewport.size().height()
+        ):
+            self.current_position = "not-in-vp"
+        else:
+            for position, zone in self.viewport_zone.items():
+                if (
+                    int(y_pos) <= int(zone.get("y")[1])
+                    and int(y_pos) >= int(zone.get("y")[0])
+                    and int(x_pos) <= int(zone.get("x")[1])
+                    and int(x_pos) >= int(zone.get("x")[0])
+                ):
+                    self.current_position = position
+        print self.current_position
+
+    def get_viewport_zone(self):
+        """define the boundary of the viewport zones"""
+        self.viewport_zone["top-left"] = {
+            "y": [0, self.viewport.size().height() / 3],
+            "x": [0, self.viewport.size().width() / 3],
+        }
+        self.viewport_zone["left"] = {
+            "y": [
+                self.viewport.size().height() / 3,
+                self.viewport.size().height() / 3 * 2,
+            ],
+            "x": [0, self.viewport.size().width() / 3],
+        }
+        self.viewport_zone["bottom-left"] = {
+            "y": [self.viewport.size().height() / 3 * 2, self.viewport.size().height()],
+            "x": [0, self.viewport.size().width() / 3],
+        }
+        self.viewport_zone["top"] = {
+            "y": [0, self.viewport.size().height() / 3],
+            "x": [
+                self.viewport.size().width() / 3,
+                self.viewport.size().width() / 3 * 2,
+            ],
+        }
+        self.viewport_zone["center"] = {
+            "y": [
+                self.viewport.size().height() / 3,
+                self.viewport.size().height() / 3 * 2,
+            ],
+            "x": [
+                self.viewport.size().width() / 3,
+                self.viewport.size().width() / 3 * 2,
+            ],
+        }
+        self.viewport_zone["bottom"] = {
+            "y": [self.viewport.size().height() / 3 * 2, self.viewport.size().height()],
+            "x": [
+                self.viewport.size().width() / 3,
+                self.viewport.size().width() / 3 * 2,
+            ],
+        }
+        self.viewport_zone["top-right"] = {
+            "y": [0, self.viewport.size().height() / 3],
+            "x": [self.viewport.size().width() / 3 * 2, self.viewport.size().width()],
+        }
+        self.viewport_zone["right"] = {
+            "y": [
+                self.viewport.size().height() / 3,
+                self.viewport.size().height() / 3 * 2,
+            ],
+            "x": [self.viewport.size().width() / 3 * 2, self.viewport.size().width()],
+        }
+        self.viewport_zone["bottom-right"] = {
+            "y": [self.viewport.size().height() / 3 * 2, self.viewport.size().height()],
+            "x": [self.viewport.size().width() / 3 * 2, self.viewport.size().width()],
+        }
 
     def minimize(self):
         """Minimize widget or hide it if windows is child"""
@@ -558,12 +742,14 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         if obj == self.main_window:
             if event.type() == QtCore.QEvent.Move:
                 self.move_widget_with_viewport(event.type())
+                self.window_pos_from_vp = self.get_window_pos_from_viewport()
             if event.type() == QtCore.QEvent.Resize:
                 self.viewport_size_old = self.viewport.size()
 
         # Viewport events
         if obj == self.viewport and event.type() == QtCore.QEvent.Resize:
             self.move_widget_with_viewport(event.type())
+            self.window_pos_from_vp = self.get_window_pos_from_viewport()
 
         return False
 
@@ -592,7 +778,8 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
         """
         if self.move_enabled:
             self.move_enabled = False
-        self.vertical_pos = self.get_window_pos_from_viewport()
+        self.set_window_zone()
+        self.window_pos_from_vp = self.get_window_pos_from_viewport()
 
     def mouseMoveEvent(self, mouse_event):
         """What to do in case of mouse move event
@@ -626,6 +813,8 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
         self.custom_pos = self.default_pos
         self.custom_size = self.default_size
+        self.set_window_zone()
+        self.window_pos_from_vp = self.get_window_pos_from_viewport()
 
 
 class HButton(QtWidgets.QPushButton):
