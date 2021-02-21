@@ -11,6 +11,7 @@ import maya.OpenMayaUI as omui
 
 # Python specific import
 from functools import wraps
+import os
 
 # Module specific imports
 import Qt.custom_widget as cstm_widget
@@ -89,7 +90,8 @@ class ReferenceManager(QtCore.QObject):
         self.reference_list.customContextMenuRequested.connect(
             self.option_context_menu_popup
         )
-
+        self.help_button.clicked.connect(self.show_help)
+        
         self.all_live.triggered.connect(lambda: self.all_state("green"))
         self.all_cache.triggered.connect(lambda: self.all_state("orange"))
         self.all_unload.triggered.connect(lambda: self.all_state("red"))
@@ -231,10 +233,33 @@ class ReferenceManager(QtCore.QObject):
                 item.setHidden(True)
 
     def refresh_list(self):
+        """
+        Clear and repopulate the Qlistwidget reference_list
+        """
         self.reference_list.clear()
         logic.get_rigs()
         self.populate(logic.rigs)
 
+    def show_help(self):
+        
+        """Create help window loading the html page of the tool"""
+        self.window = cstm_widget.HTransparentDialogOnViewport(
+            "show_help",
+            parent=self.main_ui,
+            pos=[10, 10],
+            size=[1000, 600],
+            visible=True,
+            orientation="vertical",
+        )
+        self.window.show()
+        self.webEngineView = QtWebEngineWidgets.QWebEngineView(self.window)
+        self.webEngineView.load(
+            QtCore.QUrl().fromLocalFile(
+                os.path.split(
+                    os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]
+                )[0]
+                + r"/docs/build/html/guides/Reference-manager.html"
+            )
+        )
+        self.window.main_layout.addWidget(self.webEngineView)
 
-# Rig_manager = ReferenceManager()
-# Rig_manager.main_ui.show()
