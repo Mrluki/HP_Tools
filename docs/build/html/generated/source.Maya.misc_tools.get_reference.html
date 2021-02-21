@@ -93,6 +93,7 @@
 <p class="caption"><span class="caption-text">How to use:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../guides/Sculpt-anim.html">Sculpt Anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Reference-manager.html">Reference Manager</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Python</span></p>
 <ul class="current">
@@ -104,12 +105,14 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">get_reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_target_index.html">get_target_index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_time.html">get_time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_visible_mesh_from_namespace.html">get_visible_mesh_from_namespace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.import_gpu.html">import_gpu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.import_plug.html">import_plug</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.lock_attribute.html">lock_attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.set_display_setting.html">set_display_setting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.show_geo_only.html">show_geo_only</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.unlock_attribute.html">unlock_attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.viewportOff.html">viewportOff</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.visibility_check.html">visibility_check</a></li>
 </ul>
 </li>
@@ -118,6 +121,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html#qt">Qt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#reference-manager">Reference_manager</a></li>
 </ul>
 
             
@@ -193,26 +197,8 @@
 <h1>get_reference<a class="headerlink" href="#get-reference" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="source.Maya.misc_tools.get_reference">
-<code class="sig-prename descclassname">source.Maya.misc_tools.</code><code class="sig-name descname">get_reference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.Maya.misc_tools.get_reference" title="Permalink to this definition">¶</a></dt>
-<dd><p>return all reference in the given state (loaded/unloaded)</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Maya.misc_tools</span> <span class="k">as</span> <span class="nn">mtools</span>
-
-<span class="n">loaded_ref</span> <span class="o">=</span> <span class="n">mtools</span><span class="o">.</span><span class="n">get_reference</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">unloaded_ref</span> <span class="o">=</span> <span class="n">mtools</span><span class="o">.</span><span class="n">get_reference</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> for loaded reference <code class="docutils literal notranslate"><span class="pre">False</span></code> for unloaded</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>references in given state</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<code class="sig-prename descclassname">source.Maya.misc_tools.</code><code class="sig-name descname">get_reference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.Maya.misc_tools.get_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the reference in file</p>
 </dd></dl>
 
 </div>

@@ -9,7 +9,8 @@ Installation
 
 .. image:: /gif/installation/download.gif
 
-* | Extract the folder where you want and use the drop the ``HP_Tools Drag'n Drop install`` in maya 
+* | Extract the folder where you want and drop the ``HP_Tools Drag'n Drop install`` in maya 
   | It'll prompt a dialog proposing you to install the shelf
-  
+
 .. image:: /gif/installation/draganddrop.gif
+

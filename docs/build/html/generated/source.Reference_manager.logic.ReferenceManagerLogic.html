@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ReferenceManagerLogic &mdash; Hugo Potin tool 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ReferenceManagerLogic.change_state" href="source.Reference_manager.logic.ReferenceManagerLogic.change_state.html" />
+    <link rel="prev" title="source.Reference_manager.logic" href="source.Reference_manager.logic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/h_tool_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to use:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Sculpt-anim.html">Sculpt Anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Reference-manager.html">Reference Manager</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#qt">Qt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html#reference-manager">Reference_manager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="source.Reference_manager.logic.html">source.Reference_manager.logic</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ReferenceManagerLogic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.change_state.html">ReferenceManagerLogic.change_state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.create_cache.html">ReferenceManagerLogic.create_cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.get_current_state.html">ReferenceManagerLogic.get_current_state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.get_rigs.html">ReferenceManagerLogic.get_rigs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.path_gen.html">ReferenceManagerLogic.path_gen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.update_status.html">ReferenceManagerLogic.update_status</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source.Reference_manager.ui.html">source.Reference_manager.ui</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hugo Potin tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../modules.html">Maya</a> &raquo;</li>
+        
+          <li><a href="source.Reference_manager.logic.html">source.Reference_manager.logic</a> &raquo;</li>
+        
+      <li>ReferenceManagerLogic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/generated/source.Reference_manager.logic.ReferenceManagerLogic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="referencemanagerlogic">
+<h1>ReferenceManagerLogic<a class="headerlink" href="#referencemanagerlogic" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="source.Reference_manager.logic.ReferenceManagerLogic">
+<em class="property">class </em><code class="sig-prename descclassname">source.Reference_manager.logic.</code><code class="sig-name descname">ReferenceManagerLogic</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.Reference_manager.logic.ReferenceManagerLogic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rig manager tool Logic</p>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.change_state.html#source.Reference_manager.logic.ReferenceManagerLogic.change_state" title="source.Reference_manager.logic.ReferenceManagerLogic.change_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.change_state</span></code></a>(state_dest)</p></td>
+<td><p>change state of reference according to current state and state destination</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.create_cache.html#source.Reference_manager.logic.ReferenceManagerLogic.create_cache" title="source.Reference_manager.logic.ReferenceManagerLogic.create_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.create_cache</span></code></a>()</p></td>
+<td><p>export selected rig to gpu unload reference and load gpu cache</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.get_current_state.html#source.Reference_manager.logic.ReferenceManagerLogic.get_current_state" title="source.Reference_manager.logic.ReferenceManagerLogic.get_current_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.get_current_state</span></code></a>()</p></td>
+<td><p>return the current state of the reference</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.get_rigs.html#source.Reference_manager.logic.ReferenceManagerLogic.get_rigs" title="source.Reference_manager.logic.ReferenceManagerLogic.get_rigs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.get_rigs</span></code></a>()</p></td>
+<td><p>get the rigs name and their current status</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.path_gen.html#source.Reference_manager.logic.ReferenceManagerLogic.path_gen" title="source.Reference_manager.logic.ReferenceManagerLogic.path_gen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.path_gen</span></code></a>(file_name)</p></td>
+<td><p>generate path and create gpu cache folder if needed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Reference_manager.logic.ReferenceManagerLogic.update_status.html#source.Reference_manager.logic.ReferenceManagerLogic.update_status" title="source.Reference_manager.logic.ReferenceManagerLogic.update_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReferenceManagerLogic.update_status</span></code></a>(…)</p></td>
+<td><p>update status icon and run the change state function on selected widget</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="source.Reference_manager.logic.ReferenceManagerLogic.change_state.html" class="btn btn-neutral float-right" title="ReferenceManagerLogic.change_state" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source.Reference_manager.logic.html" class="btn btn-neutral float-left" title="source.Reference_manager.logic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Hugo potin. Theme based on Godot dark theme.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

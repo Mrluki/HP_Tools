@@ -26,6 +26,8 @@
     
     get_time
     
+    get_visible_mesh_from_namespace
+    
     import_gpu
     
     import_plug
@@ -37,6 +39,8 @@
     show_geo_only
     
     unlock_attribute
+    
+    viewportOff
     
     visibility_check
     

@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta content="How to use reference manager tool It will cache unload or load your references" lang="en" name="description" xml:lang="en" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Reference Manager &mdash; Hugo Potin tool 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maya" href="../modules.html" />
+    <link rel="prev" title="Sculpt Anim" href="Sculpt-anim.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/h_tool_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to use:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Sculpt-anim.html">Sculpt Anim</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#launch-in-maya">Launch in maya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interface">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialize-tool">Initialize tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-state">Change State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter">Filter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#qt">Qt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#reference-manager">Reference_manager</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hugo Potin tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Reference Manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/guides/Reference-manager.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reference-manager">
+<h1>Reference Manager<a class="headerlink" href="#reference-manager" title="Permalink to this headline">¶</a></h1>
+<p>This tool allow you to cache unload or load your references. Handy when you need to see what your character are doing but the rigs are too heavy</p>
+<div class="section" id="launch-in-maya">
+<span id="reference-manager-launch-in-maya"></span><h2>Launch in maya<a class="headerlink" href="#launch-in-maya" title="Permalink to this headline">¶</a></h2>
+<p>If you have created a shelf when installing the tools you just have to press this icon</p>
+<img alt="../_images/reference_manager_icon.png" src="../_images/reference_manager_icon.png" />
+<p>If not you can run this code in Maya script editor</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Sculpt_anim.ui</span> <span class="kn">as</span> <span class="nn">sculpt_anim</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">UI</span><span class="o">.</span><span class="n">main_ui</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+    <span class="n">UI</span><span class="o">.</span><span class="n">main_ui_quit</span><span class="p">()</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+<span class="n">sculpt_anim_UI</span> <span class="o">=</span> <span class="n">sculpt_anim</span><span class="o">.</span><span class="n">SculptAnimUI</span><span class="p">()</span>
+<span class="n">sculpt_anim_UI</span><span class="o">.</span><span class="n">main_ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interface">
+<span id="reference-manager-interface"></span><h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/reference_manager_interface.png" class="align-center" src="../_images/reference_manager_interface.png" />
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Search Bar</strong></dt><dd><p>Input box that allow you to search for a particular reference name or state</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Reference list</strong></dt><dd><p>List all the reference in the scene and their current state.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Green: Loaded</p></li>
+<li><p>Orange: Cached</p></li>
+<li><p>Red: Unloaded</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><dl class="simple">
+<dt><strong>Right Click Menu</strong></dt><dd><p>Pop up menu with additional actions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Load All</strong></dt><dd><p>Change state for all displayed reference</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Cache All</strong></dt><dd><p>Change state for all displayed reference</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Unload All</strong></dt><dd><p>Change state for all displayed reference</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Refresh button</strong></dt><dd><p>update the scene reference (if for example a new reference is imported)</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Help</strong></p></li>
+</ol>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initialize-tool">
+<h3>Initialize tool<a class="headerlink" href="#initialize-tool" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Load the tool in maya</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="Sculpt-anim.html#sculpt-anim-launch-in-maya"><span class="std std-ref">Launch in maya</span></a></p>
+</div>
+</div>
+<div class="section" id="change-state">
+<h3>Change State<a class="headerlink" href="#change-state" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Select the reference you want to change the state in the ui and click the state icon to chose a new state</p></li>
+</ul>
+<img alt="../_images/change_state.gif" src="../_images/change_state.gif" />
+</div>
+<div class="section" id="filter">
+<h3>Filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>You can search for a reference by name</p></li>
+<li><p>You can also filter by state with the <code class="docutils literal notranslate"><span class="pre">&#64;loaded</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;cached</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;unloaded</span></code> commands</p></li>
+</ul>
+<img alt="../_images/filter.gif" src="../_images/filter.gif" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../modules.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Sculpt-anim.html" class="btn btn-neutral float-left" title="Sculpt Anim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Hugo potin. Theme based on Godot dark theme.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -93,6 +93,7 @@
 <p class="caption"><span class="caption-text">How to use:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../guides/Sculpt-anim.html">Sculpt Anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/Reference-manager.html">Reference Manager</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Python</span></p>
 <ul class="current">
@@ -104,12 +105,14 @@
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_reference.html">get_reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_target_index.html">get_target_index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_time.html">get_time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.get_visible_mesh_from_namespace.html">get_visible_mesh_from_namespace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.import_gpu.html">import_gpu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.import_plug.html">import_plug</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.lock_attribute.html">lock_attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.set_display_setting.html">set_display_setting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.show_geo_only.html">show_geo_only</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.unlock_attribute.html">unlock_attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.viewportOff.html">viewportOff</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source.Maya.misc_tools.visibility_check.html">visibility_check</a></li>
 </ul>
 </li>
@@ -118,6 +121,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html#qt">Qt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html#sculpt-anim">Sculpt_anim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#reference-manager">Reference_manager</a></li>
 </ul>
 
             
@@ -205,8 +209,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_namespace.html#source.Maya.misc_tools.get_namespace" title="source.Maya.misc_tools.get_namespace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_namespace</span></code></a>(objects)</p></td>
 <td><p>get namespace of all selected object</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_reference.html#source.Maya.misc_tools.get_reference" title="source.Maya.misc_tools.get_reference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reference</span></code></a>(state)</p></td>
-<td><p>return all reference in the given state (loaded/unloaded)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_reference.html#source.Maya.misc_tools.get_reference" title="source.Maya.misc_tools.get_reference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reference</span></code></a>()</p></td>
+<td><p>Get all the reference in file</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_target_index.html#source.Maya.misc_tools.get_target_index" title="source.Maya.misc_tools.get_target_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_target_index</span></code></a>(blendshape, target)</p></td>
 <td><p>Get index of specified target in blendshape</p></td>
@@ -214,23 +218,29 @@
 <tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_time.html#source.Maya.misc_tools.get_time" title="source.Maya.misc_tools.get_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_time</span></code></a>(mode)</p></td>
 <td><p>give time range</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.import_gpu.html#source.Maya.misc_tools.import_gpu" title="source.Maya.misc_tools.import_gpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_gpu</span></code></a>(file_name, path)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.get_visible_mesh_from_namespace.html#source.Maya.misc_tools.get_visible_mesh_from_namespace" title="source.Maya.misc_tools.get_visible_mesh_from_namespace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_visible_mesh_from_namespace</span></code></a>(namespace)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.import_gpu.html#source.Maya.misc_tools.import_gpu" title="source.Maya.misc_tools.import_gpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_gpu</span></code></a>(file_name, path)</p></td>
 <td><p>import given file as gpu cache</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.import_plug.html#source.Maya.misc_tools.import_plug" title="source.Maya.misc_tools.import_plug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_plug</span></code></a>(**plugin)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.import_plug.html#source.Maya.misc_tools.import_plug" title="source.Maya.misc_tools.import_plug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_plug</span></code></a>(**plugin)</p></td>
 <td><p>Import specified plugin in maya</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.lock_attribute.html#source.Maya.misc_tools.lock_attribute" title="source.Maya.misc_tools.lock_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lock_attribute</span></code></a>(mesh, attributes)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.lock_attribute.html#source.Maya.misc_tools.lock_attribute" title="source.Maya.misc_tools.lock_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lock_attribute</span></code></a>(mesh, attributes)</p></td>
 <td><p>lock given attributes</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.set_display_setting.html#source.Maya.misc_tools.set_display_setting" title="source.Maya.misc_tools.set_display_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_display_setting</span></code></a>(display_settings)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.set_display_setting.html#source.Maya.misc_tools.set_display_setting" title="source.Maya.misc_tools.set_display_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_display_setting</span></code></a>(display_settings)</p></td>
 <td><p>set maya viewport display settings</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.show_geo_only.html#source.Maya.misc_tools.show_geo_only" title="source.Maya.misc_tools.show_geo_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_geo_only</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.show_geo_only.html#source.Maya.misc_tools.show_geo_only" title="source.Maya.misc_tools.show_geo_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_geo_only</span></code></a>()</p></td>
 <td><p>Hide everything except geometry</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.unlock_attribute.html#source.Maya.misc_tools.unlock_attribute" title="source.Maya.misc_tools.unlock_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlock_attribute</span></code></a>(mesh)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.unlock_attribute.html#source.Maya.misc_tools.unlock_attribute" title="source.Maya.misc_tools.unlock_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlock_attribute</span></code></a>(mesh)</p></td>
 <td><p>Unlock all locked attribute from mesh</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="source.Maya.misc_tools.viewportOff.html#source.Maya.misc_tools.viewportOff" title="source.Maya.misc_tools.viewportOff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewportOff</span></code></a>(func)</p></td>
+<td><p>Decorator - turn off Maya display while func is running.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="source.Maya.misc_tools.visibility_check.html#source.Maya.misc_tools.visibility_check" title="source.Maya.misc_tools.visibility_check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visibility_check</span></code></a>(obj)</p></td>
 <td><p>check the visibility of given objects</p></td>

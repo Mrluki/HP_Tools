@@ -20,20 +20,28 @@ Guide |:book:|
 Those tutorial will guide trough how to use the different tools available
 
 * :doc:`Sculpt anim </guides/Sculpt-anim>`
+* :doc:`Reference manager </guides/Reference-manager>`
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: How to use:
    :hidden:
 
    guides/Sculpt-anim
-   
+   guides/Reference-manager
+
+
+Widgets |:frame_photo:|
+-----------------------
+
+* :doc:`Custom widgets <widget>`
+
 Python |:snake:|
 ----------------
 Reference for the different modules composing the tools
 
 ..
-  All that because I want the skake emoji
+  All that because I want the snake emoji
 
 * :doc:`Maya <modules>`
   
@@ -48,8 +56,11 @@ Reference for the different modules composing the tools
   
   * :doc:`logic <generated/source.Sculpt_anim.logic>` 
   * :doc:`ui <generated/source.Sculpt_anim.ui>` 
-
-
+  * 
+* :doc:`Reference_manager <modules>`
+  
+  * :doc:`logic <generated/source.Reference_manager.logic>` 
+  * :doc:`ui <generated/source.Reference_manager.ui>` 
 
   
 .. toctree::

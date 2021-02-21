@@ -23,3 +23,12 @@ Sculpt_anim
    
    source.Sculpt_anim.logic
    source.Sculpt_anim.ui
+
+Reference_manager
+---------
+
+.. autosummary::
+   :toctree: generated
+   
+   source.Reference_manager.logic
+   source.Reference_manager.ui

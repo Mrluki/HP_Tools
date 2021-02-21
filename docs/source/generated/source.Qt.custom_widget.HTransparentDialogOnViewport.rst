@@ -18,12 +18,8 @@ HTransparentDialogOnViewport
                   HTransparentDialogOnViewport.create_layout
                   HTransparentDialogOnViewport.create_widgets
                   HTransparentDialogOnViewport.eventFilter
-                  HTransparentDialogOnViewport.get_all_widget
-                  HTransparentDialogOnViewport.get_all_window
+                  HTransparentDialogOnViewport.get_viewport_zone
                   HTransparentDialogOnViewport.get_window_pos_from_viewport
-                  HTransparentDialogOnViewport.get_window_rect
-                  HTransparentDialogOnViewport.install_filter_on_all_window
-                  HTransparentDialogOnViewport.mask
                   HTransparentDialogOnViewport.maximize
                   HTransparentDialogOnViewport.minimize
                   HTransparentDialogOnViewport.mouseDoubleClickEvent
@@ -32,7 +28,7 @@ HTransparentDialogOnViewport
                   HTransparentDialogOnViewport.mouseReleaseEvent
                   HTransparentDialogOnViewport.move_widget_with_viewport
                   HTransparentDialogOnViewport.paintEvent
+                  HTransparentDialogOnViewport.set_window_zone
                   HTransparentDialogOnViewport.ui_quit
-                  HTransparentDialogOnViewport.visibility
    
    

@@ -17,6 +17,8 @@
     
     HQSlider
     
+    HStatus
+    
     HTransparentDialogOnViewport
     
 
@@ -32,5 +34,7 @@
     get_viewport
     
     maya_main_window
+    
+    selected_widget_qlist_widget
     
 

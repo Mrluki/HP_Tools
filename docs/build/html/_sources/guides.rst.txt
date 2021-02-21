@@ -1,0 +1,18 @@
+Sculpt Anim
+-----------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: How to use:
+   :hidden:
+   
+   guides/Sculpt-anim
+
+Reference Manager
+-----------------
+.. toctree::
+   :maxdepth: 1
+   :caption: How to use:
+   :hidden:
+
+   guides/Reference-manager
