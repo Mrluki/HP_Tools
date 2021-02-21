@@ -139,10 +139,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
     Todo:
         * Allow to minimize the window to different side (top left, top right, bottom left, bottom right)
-        Done:
-        * hide on maya prompt / maya calculation (reparented to maya main-window 
-            and changing some param allowed to remove the visibility and mask fct )
-        * Improve UI positioning when rescaling maya,something like ui pos * (viewport size full screen/viewport size current)
 
     Args:
         object_name (str): Name of the window that'll be created
@@ -527,7 +523,6 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
                     and int(x_pos) >= int(zone.get("x")[0])
                 ):
                     self.current_position = position
-        print self.current_position
 
     def get_viewport_zone(self):
         """define the boundary of the viewport zones"""
@@ -818,13 +813,14 @@ class HTransparentDialogOnViewport(QtWidgets.QDialog):
 
 
 class HButton(QtWidgets.QPushButton):
-    """Create a Custom QPushButton with quick param setup and auto scale icon.
+    """
+    Create a Custom QPushButton with quick param setup and auto scale icon.
 
     .. image:: /gif/qt/Hbutton.gif
-        :align: center
-        :width: 50%
+       :align: center
+       :width: 50%
+       
     |
-
 
     Todo:
         Accept text and icon at the same time and make take also scalable
@@ -927,7 +923,8 @@ class HButton(QtWidgets.QPushButton):
         self.setSizePolicy(size_policy)
 
     def set_style_sheet(self):
-        """set the style sheet of the button according to user input or default
+        """
+        set the style sheet of the button according to user input or default
         style sheet
 
         ``defaults``:
@@ -1127,49 +1124,50 @@ class HIconLabel(QtWidgets.QWidget):
 
 
 class HStatus(QtWidgets.QWidget):
-    """Allow to display a name and a status that can be change by pressing
-        the status icon button
+    """
+    Allow to display a name and a status that can be change by pressing
+    the status icon button
 
-        |
+    |
 
-        .. image:: /img/Qt/HStatus.gif
-                    :align: Center
-        |
+    .. image:: /gif/Qt/HStatus.gif
+                :align: Center
+    |
 
-        Example::
+    Example::
 
-    # Module specific imports
-    import Qt.custom_widget as cstm_widget
-    # PySide specific imports
-    from PySide2 import QtCore
-    from PySide2 import QtWidgets
-    from PySide2 import QtGui
+        # Module specific imports
+        import Qt.custom_widget as cstm_widget
+        # PySide specific imports
+        from PySide2 import QtCore
+        from PySide2 import QtWidgets
+        from PySide2 import QtGui
 
-    win = QtWidgets.QDialog()
+        win = QtWidgets.QDialog()
 
-    layout = QtWidgets.QVBoxLayout(win)
+        layout = QtWidgets.QVBoxLayout(win)
 
-    reference = 'rig1RN'
-    item_name = 'rig1'
-    status = 'green'
+        reference = 'rig1RN'
+        item_name = 'rig1'
+        status = 'green'
 
-    widget = cstm_widget.HStatus(
-        object_name=reference, item_name=item_name, status=status
-        )
+        widget = cstm_widget.HStatus(
+            object_name=reference, item_name=item_name, status=status
+            )
 
-    # if you want to change the status name in the pop up menu
-    widget.green_action.setText('load')
-    widget.orange_action.setText('cache')
-    widget.red_action.setText('unload')
+        # if you want to change the status name in the pop up menu
+        widget.green_action.setText('load')
+        widget.orange_action.setText('cache')
+        widget.red_action.setText('unload')
 
-    layout.addWidget(my_label)
+        layout.addWidget(my_label)
 
-    win.show()
+        win.show()
 
-        Args:
-            object_name (str): name of the widget
-            item_name (str): name of the item that will be displayed
-            item_status (str): current status of the item
+    Args:
+        object_name (str): name of the widget
+        item_name (str): name of the item that will be displayed
+        item_status (str): current status of the item
 
     """
 
@@ -1253,8 +1251,8 @@ class HStatus(QtWidgets.QWidget):
         """Change the status icon of the item
 
         Args:
-            status_dict (dict): {widget, widget_status} the icon of the widget will be set
-            to widget_status, accepted value for widget_status are ``green``, ``orange``, ``red``
+            status_dict (dict): {widget, widget_status} widget status will change the color of the status icon, 
+                accepted value for widget_status are ``green``, ``orange``, ``red``
         """
         for item, status in status_dict.items():
             if status == "green":

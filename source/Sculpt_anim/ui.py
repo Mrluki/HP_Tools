@@ -11,7 +11,6 @@ import os
 # Module specific imports
 import Qt.custom_widget as cstm_widget
 
-reload(cstm_widget)
 import Maya.custom_marking_menu as cstm_menu
 import Qt.icon_rc
 import Sculpt_anim.logic
@@ -185,7 +184,7 @@ class SculptAnimUI(QtCore.QObject):
         self.window = cstm_widget.HTransparentDialogOnViewport(
             "show_help",
             parent=self.main_ui,
-            pos=[10, 50],
+            pos=[10, 10],
             size=[1000, 600],
             visible=True,
             orientation="vertical",
