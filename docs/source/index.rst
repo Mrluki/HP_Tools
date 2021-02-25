@@ -56,7 +56,7 @@ Reference for the different modules composing the tools
   
   * :doc:`logic <generated/source.Sculpt_anim.logic>` 
   * :doc:`ui <generated/source.Sculpt_anim.ui>` 
-  * 
+  
 * :doc:`Reference_manager <modules>`
   
   * :doc:`logic <generated/source.Reference_manager.logic>` 
