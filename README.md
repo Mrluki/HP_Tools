@@ -7,3 +7,4 @@ complete documentation at https://hp-tools.readthedocs.io/
 
 for any issue please contact me at potin.hugo@gmail.com
 
+Please note that none of those tool were tested outside a local environement 
