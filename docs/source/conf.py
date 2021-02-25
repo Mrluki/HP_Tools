@@ -63,6 +63,7 @@ autodoc_mock_imports = [
     "Qt",
     "Maya",
     "Sculpt_anim",
+    "Reference_manager",
 ]
 todo_include_todos = True
 pygments_style = "monokai"

@@ -16,7 +16,7 @@ Qt
 
 
 Sculpt_anim
----------
+-----------
 
 .. autosummary::
    :toctree: generated
@@ -25,7 +25,7 @@ Sculpt_anim
    source.Sculpt_anim.ui
 
 Reference_manager
----------
+-----------------
 
 .. autosummary::
    :toctree: generated
