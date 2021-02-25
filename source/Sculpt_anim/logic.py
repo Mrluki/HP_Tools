@@ -38,9 +38,9 @@ class SculptAnimLogic(QtCore.QObject):
         self.prev_key = None
         self.ctx = "clickMesh"
         self.current_tool = None
-        self.enable_override_node = "enable_override_node"
-        self.display_type_node = "display_type_node"
-        self.visibility_override_node = "visibility_override_node"
+        self.enable_override_node = None
+        self.display_type_node = None
+        self.visibility_override_node = None
 
     def mesh_init(self, mesh):
         """AI is creating summary for mesh_init
@@ -61,14 +61,17 @@ class SculptAnimLogic(QtCore.QObject):
             self.mesh_short_name,
             mtools.get_time(3)[0],
         )
-
-        # set up override attributes, cmds.objExists can't catch if a float constant node exist
+        self.enable_override_node = "%s_enable_override_node" % self.mesh_short_name
+        self.display_type_node = "%s_display_type_node" % self.mesh_short_name
+        self.visibility_override_node = "%s_visibility_override_node" % self.mesh_short_name
+        
+        # set up override attributes
         # enable override on mesh
         try:
-            self.enable_override_node = pm.PyNode("enable_overide_node")
+            pm.PyNode(self.enable_override_node)
         except pm.MayaNodeError:
             self.enable_override_node = cmds.createNode(
-                "floatConstant", n="enable_overide_node"
+                "floatConstant", n=self.enable_override_node
             )
             cmds.connectAttr(
                 "%s.inFloat" % self.enable_override_node,
@@ -78,10 +81,10 @@ class SculptAnimLogic(QtCore.QObject):
 
         # set mesh to reference
         try:
-            self.display_type_node = pm.PyNode("display_type_node")
+            pm.PyNode(self.display_type_node)
         except pm.MayaNodeError:
             self.display_type_node = cmds.createNode(
-                "floatConstant", n="display_type_node"
+                "floatConstant", n=self.display_type_node
             )
             cmds.connectAttr(
                 "%s.inFloat" % self.display_type_node,
@@ -94,7 +97,7 @@ class SculptAnimLogic(QtCore.QObject):
             self.visibility_override_node = pm.PyNode("visibility_override_node")
         except pm.MayaNodeError:
             self.visibility_override_node = cmds.createNode(
-                "floatConstant", n="visibility_override_node"
+                "floatConstant", n=self.visibility_override_node
             )
             cmds.connectAttr(
                 "%s.inFloat" % self.visibility_override_node,
@@ -116,17 +119,17 @@ class SculptAnimLogic(QtCore.QObject):
             # Create base mesh
             base_mesh = cmds.duplicate(self.mesh, n=self.base_mesh)
             # get mesh origin shape
-            relative = cmds.listHistory(self.mesh)
-            for descendent in relative:
-                if "Orig" in descendent and self.mesh_short_name[:-1] in descendent:
-                    orig_shape = descendent
-                if "Shape" in descendent:
-                    self.mesh_shape = relative[0]
+            relative = cmds.listRelatives(self.mesh, shapes=True)
+            
+            orig_shape = relative[1]
+            self.mesh_shape = relative[0]
+
             pm.setAttr("%s.intermediateObject" % orig_shape, 0)
 
             # set base mesh
-            cmds.blendShape(orig_shape, base_mesh, n="orig_bs")
-            cmds.setAttr("orig_bs.%s" % orig_shape.split(":")[-1], 1)
+            orig_bs = "%s_orig_bs" % self.mesh_short_name
+            cmds.blendShape(orig_shape, base_mesh, n=orig_bs)
+            cmds.setAttr(orig_bs+".%s" % orig_shape.split(":")[-1], 1)
             cmds.DeleteHistory(self.base_mesh)
 
             # Parent base mesh to grp
@@ -279,6 +282,19 @@ class SculptAnimLogic(QtCore.QObject):
         cmds.delete(self.temp_skin)
         cmds.select(self.blendshape)
         self.toggle_target(lock_=True)
+
+        
+        # set context that allow to click on the mesh to edit the mesh -> function : logic.SculptAnimLogic.cursor_on_mesh
+        if cmds.draggerContext(self.ctx, exists=True):
+            cmds.deleteUI(self.ctx)
+            
+        cmds.draggerContext(
+            self.ctx,
+            pressCommand=self.cursor_on_mesh,
+            name=self.ctx,
+            cursor="crossHair",
+        )
+        cmds.setToolTo(self.ctx)
 
     def create_temp(self):
         """Create a duplicate of the mesh with all his deformer"""

@@ -14,7 +14,6 @@ import Qt.custom_widget as cstm_widget
 import Maya.custom_marking_menu as cstm_menu
 import Qt.icon_rc
 import Sculpt_anim.logic
-
 logic = Sculpt_anim.logic.SculptAnimLogic()
 
 # Software specific import
@@ -256,7 +255,7 @@ class SculptAnimUI(QtCore.QObject):
         Args:
             mesh (str): new mesh
         """
-
+        logic.quit()
         self.current_time = int(cmds.currentTime(query=True))
 
         # user error management
@@ -352,16 +351,6 @@ class SculptAnimUI(QtCore.QObject):
                 else:
                     self.key_button.set_style_sheet()
 
-            # set context that allow to click on the mesh to edit the mesh -> function : logic.SculptAnimLogic.cursor_on_mesh
-            if cmds.draggerContext(logic.ctx, exists=True):
-                cmds.deleteUI(logic.ctx)
-            cmds.draggerContext(
-                logic.ctx,
-                pressCommand=logic.cursor_on_mesh,
-                name=logic.ctx,
-                cursor="crossHair",
-            )
-            cmds.setToolTo(logic.ctx)
             # Update tweener
             twenner_value = logic.tweener_pos_update()
             self.tweener_slider.setValue(twenner_value)
